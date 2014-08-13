@@ -1,0 +1,15 @@
+<template name="lobby">
+	{{#if currentUser}}
+		<button class="btn create-game-btn">Create Game</button>
+
+		{{> newGameForm}}
+	{{/if}}
+
+	<div class="game-lobby">
+		<h4>Lobby</h4>
+		{{#each games}}
+			{{> lobbyGameView}}
+		{{/each}}
+	</div>
+
+</template>

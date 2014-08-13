@@ -1,0 +1,11 @@
+<template name="layout">
+  <div class="container pull-left full-width">
+    {{> header}}
+    <div class="main">
+    	<div class="content pure-g">
+    		{{> errors}}
+        {{> yield}}
+    	</div>
+    </div>
+  </div>
+</template>
