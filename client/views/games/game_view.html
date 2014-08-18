@@ -1,8 +1,27 @@
 <template name="gameView">
-	<h1 class="game-name">{{name}}</h1>
+	<div class="game-view pure-g">
+		<header class="game-header pure-u-1 pull-left">
+			<h3 class="game-name">{{name}}</h3>
+			{{#if creator}}
+				<!-- {{#if started}}
+					<button class="btn end-game-btn">End Game</button>
+				{{else}} -->
+					<button class="btn start-game-btn">Start Game</button>
+				<!-- {{/if}} -->
+			{{/if}}
+		</header>
 
-	<h3>Players</h3>
-	{{#each players}}
-		Name: {{profile.name}}
-	{{/each}}
+		<section class="players pure-u-1-5">
+			<h4>Players ({{players.count}}/8)</h4>
+			<ul class="player-list">
+			{{#each players}}
+				<li class="player-name">{{profile.name}}</li>
+			{{/each}}
+			</ul>
+		</section>
+
+		<section class="game-area pure-u-4-5">
+		<h3>Game Board</h3>
+		</section>
+	</div>
 </template>

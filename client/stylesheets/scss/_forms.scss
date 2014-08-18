@@ -1,0 +1,41 @@
+.form-control{
+	padding: 5px 0px;
+}
+
+label{
+	font-size: .9rem;
+
+	&.block{
+		display: block
+	}
+}
+
+input{
+	border: 0px;
+	padding: 5px 10px;
+	background-color: $light-grey;
+	font-size: 1.1rem;
+
+	&[type=submit]{
+		background-color: $green;
+		color: white;
+	}
+}
+
+form{
+	margin-bottom: 10px;
+}
+
+
+.new-game-form{
+	max-height: 200px;
+	@include rotateX(0deg);
+	@include transition(all 300ms ease-in-out);
+	@include transform-origin(top, center);
+
+	&.collapsed{
+		@include rotateX(-90deg);
+		max-height: 0px;
+		overflow: hidden;
+	}
+}

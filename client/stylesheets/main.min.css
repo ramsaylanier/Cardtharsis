@@ -1,0 +1,1285 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700);
+/* line 17, ../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/*!
+ *
+.||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||.
+
+	.                                      '||            .
+  .||.  .... ... ... ...    ....  ... ...   ||   ....   .||.    ....
+   ||    '|.  |   ||'  || .|...||  ||'  ||  ||  '' .||   ||   .|...||
+   ||     '|.|    ||    | ||       ||    |  ||  .|' ||   ||   ||
+   '|.'    '|     ||...'   '|...'  ||...'  .||. '|..'|'  '|.'  '|...'
+		.. |      ||               ||
+		 ''      ''''             ''''      A Typographic Starter Kit
+
+  URL ........... http://typeplate.com
+  VERSION ....... 1.1.1
+  Github ........ https://github.com/typeplate/typeplate.github.io
+  AUTHORS ....... Dennis Gaebel (@gryghostvisuals) & Zachary Kain (@zakkain)
+  LICENSE ....... Creative Commmons Attribution 3.0
+  LICENSE URL ... http://creativecommons.org/licenses/by/3.0
+
+ .||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||.
+ *
+ */
+/* line 35, scss/_typeplate.scss */
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* line 39, scss/_typeplate.scss */
+p {
+  font-size: 1rem;
+}
+
+@font-face {
+  font-family: "Ampersand";
+  src: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua");
+  unicode-range: U+0026;
+}
+
+@font-face {
+  font-family: "Ampersand";
+  src: local("Georgia");
+  unicode-range: U+270C;
+}
+
+/* line 396, scss/_typeplate.scss */
+body {
+  word-wrap: break-word;
+}
+
+/* line 400, scss/_typeplate.scss */
+pre code {
+  word-wrap: normal;
+}
+
+/**
+ * Dropcap Sass @include
+ * Use the following Sass @include with any selector you feel necessary.
+ *
+	@include dropcap($dropcap-float-position, $dropcap-font-size, $dropcap-font-family, $dropcap-txt-indent, $dropcap-margin, $dropcap-padding, $dropcap-color, $dropcap-line-height, $dropcap-bg);
+ *
+ * Extend this object into your custom stylesheet. Let the variables do the work.
+ *
+ */
+/* line 525, scss/_typeplate.scss */
+html {
+  font: normal 112.5%/1.5 serif;
+}
+
+/* line 533, scss/_typeplate.scss */
+body {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
+  color: #444444;
+}
+
+/* line 544, scss/_typeplate.scss */
+small {
+  font-size: 65%;
+}
+
+/* line 567, scss/_typeplate.scss */
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLegibility;
+  line-height: 1;
+  margin-top: 0;
+}
+
+/* line 582, scss/_typeplate.scss */
+.tera {
+  font-size: 117px;
+  font-size: 6.5rem;
+  margin-bottom: 0.23077rem;
+}
+
+/* line 582, scss/_typeplate.scss */
+.giga {
+  font-size: 90px;
+  font-size: 5rem;
+  margin-bottom: 0.3rem;
+}
+
+/* line 582, scss/_typeplate.scss */
+.mega {
+  font-size: 72px;
+  font-size: 4rem;
+  margin-bottom: 0.375rem;
+}
+
+/* line 582, scss/_typeplate.scss */
+.alpha, h1 {
+  font-size: 60px;
+  font-size: 3.33333rem;
+  margin-bottom: 0.45rem;
+}
+
+/* line 582, scss/_typeplate.scss */
+.beta, h2 {
+  font-size: 48px;
+  font-size: 2.66667rem;
+  margin-bottom: 0.5625rem;
+}
+
+/* line 582, scss/_typeplate.scss */
+.gamma, h3 {
+  font-size: 36px;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* line 582, scss/_typeplate.scss */
+.delta, h4 {
+  font-size: 24px;
+  font-size: 1.33333rem;
+  margin-bottom: 1.125rem;
+}
+
+/* line 582, scss/_typeplate.scss */
+.epsilon, h5 {
+  font-size: 21px;
+  font-size: 1.16667rem;
+  margin-bottom: 1.28571rem;
+}
+
+/* line 582, scss/_typeplate.scss */
+.zeta, h6 {
+  font-size: 18px;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* line 622, scss/_typeplate.scss */
+p {
+  margin: auto auto 1.5rem;
+}
+
+/* line 648, scss/_typeplate.scss */
+abbr,
+acronym,
+blockquote,
+code,
+dir,
+kbd,
+listing,
+plaintext,
+q,
+samp,
+tt,
+var,
+xmp {
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  -o-hyphens: none;
+  hyphens: none;
+}
+
+/* line 656, scss/_typeplate.scss */
+pre code {
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+}
+
+/* line 661, scss/_typeplate.scss */
+pre {
+  white-space: pre;
+}
+
+/* line 665, scss/_typeplate.scss */
+code {
+  white-space: pre;
+  font-family: monospace;
+}
+
+/**
+ * Abbreviations Markup
+ *
+	<abbr title="hyper text markup language">HMTL</abbr>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/* line 681, scss/_typeplate.scss */
+abbr {
+  font-variant: small-caps;
+  font-weight: 600;
+  text-transform: lowercase;
+  color: gray;
+}
+/* line 683, scss/_typeplate.scss */
+abbr[title]:hover {
+  cursor: help;
+}
+
+/* line 697, scss/_typeplate.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #222222;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* line 708, scss/_typeplate.scss */
+p + .drop-cap {
+  text-indent: 0;
+  margin-top: 0;
+}
+
+/* line 427, scss/_typeplate.scss */
+.drop-cap:first-letter {
+  float: left;
+  margin: inherit;
+  padding: inherit;
+  font-size: 4em;
+  font-family: inherit;
+  line-height: 1;
+  text-indent: 0;
+  background: transparent;
+  color: inherit;
+}
+
+/**
+ * Lining Definition Style Markup
+ *
+	<dl class="lining">
+		<dt><b></b></dt>
+		<dd></dd>
+	</dl>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/* line 466, scss/_typeplate.scss */
+.lining dt,
+.lining dd {
+  display: inline;
+  margin: 0;
+}
+/* line 473, scss/_typeplate.scss */
+.lining dt + dt:before,
+.lining dd + dt:before {
+  content: "\A";
+  white-space: pre;
+}
+/* line 481, scss/_typeplate.scss */
+.lining dd + dd:before {
+  content: ", ";
+}
+/* line 485, scss/_typeplate.scss */
+.lining dd:before {
+  content: ": ";
+  margin-left: -0.2rem;
+}
+
+/**
+ * Dictionary Definition Style Markup
+ *
+	<dl class="dictionary-style">
+		<dt><b></b></dt>
+			<dd></dd>
+	</dl>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/* line 493, scss/_typeplate.scss */
+.dictionary-style dt {
+  display: inline;
+  counter-reset: definitions;
+}
+/* line 497, scss/_typeplate.scss */
+.dictionary-style dt + dt:before {
+  content: ", ";
+  margin-left: -0.2rem;
+}
+/* line 503, scss/_typeplate.scss */
+.dictionary-style dd {
+  display: block;
+  counter-increment: definitions;
+}
+/* line 506, scss/_typeplate.scss */
+.dictionary-style dd:before {
+  content: counter(definitions,decimal) ". ";
+}
+
+/**
+ * Blockquote Markup
+ *
+		<figure>
+			<blockquote cite="">
+				<p></p>
+			</blockquote>
+			<figcaption>
+				<cite>
+					<small><a href=""></a></small>
+				</cite>
+			</figcaption>
+		</figure>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/**
+ * Pull Quotes Markup
+ *
+	<aside class="pull-quote">
+		<blockquote>
+			<p></p>
+		</blockquote>
+	</aside>
+ *
+ * Extend this object into your custom stylesheet.
+ *
+ */
+/* line 792, scss/_typeplate.scss */
+.pull-quote {
+  position: relative;
+  padding: 1em;
+}
+/* line 368, scss/_typeplate.scss */
+.pull-quote:before, .pull-quote:after {
+  height: 1em;
+  opacity: 0.5;
+  position: absolute;
+  font-size: 4em;
+  color: #dc976e;
+}
+/* line 375, scss/_typeplate.scss */
+.pull-quote:before {
+  content: '“';
+  top: 0;
+  left: 0;
+}
+/* line 380, scss/_typeplate.scss */
+.pull-quote:after {
+  content: '”';
+  bottom: 0;
+  right: 0;
+}
+
+/**
+ * Figures Markup
+ *
+	<figure>
+		<figcaption>
+			<strong>Fig. 4.2 | </strong>Type Anatomy, an excerpt from Mark Boulton's book<cite title="http://designingfortheweb.co.uk/book/part3/part3_chapter11.php">"Designing for the Web"</cite>
+		</figcaption>
+	</figure>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/**
+ * Footnote Markup : Replace 'X' with your unique number for each footnote
+ *
+	<article>
+		<p><sup><a href="#fn-itemX" id="fn-returnX"></a></sup></p>
+		<footer>
+			<ol class="foot-notes">
+				<li id="fn-itemX"><a href="#fn-returnX">↩</a></li>
+			</ol>
+		</footer>
+	</article>
+ *
+ * Extend this object into your markup.
+ *
+ */
+/* line 1, scss/_buttons.scss */
+.btn {
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+
+/* line 9, scss/_buttons.scss */
+.green-btn {
+  background-color: white;
+  border: 2px solid #75c55f;
+  color: #75c55f;
+}
+/* line 15, scss/_buttons.scss */
+.green-btn:hover {
+  background-color: #75c55f;
+  color: white;
+  border: 2px solid transparent;
+}
+
+/* line 22, scss/_buttons.scss */
+.red-btn {
+  background-color: white;
+  border: 2px solid #e73d1f;
+  color: #e73d1f;
+}
+/* line 28, scss/_buttons.scss */
+.red-btn:hover {
+  background-color: #e73d1f;
+  color: white;
+  border: 2px solid transparent;
+}
+
+/* line 2, scss/_grid.scss */
+.pure-g {
+  letter-spacing: -0.31em;
+  text-rendering: optimizespeed;
+}
+
+/* line 13, scss/_grid.scss */
+.pure-u {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto;
+}
+
+/* line 29, scss/_grid.scss */
+.pure-u-1, .pure-u-1-2, .pure-u-1-3, .pure-u-2-3, .pure-u-1-4, .pure-u-3-4, .pure-u-1-5, .pure-u-2-5, .pure-u-3-5, .pure-u-4-5, .pure-u-1-6, .pure-u-5-6, .pure-u-1-7, .pure-u-2-7, .pure-u-3-7, .pure-u-4-7, .pure-u-5-7, .pure-u-6-7, .pure-u-1-8, .pure-u-3-8, .pure-u-5-8, .pure-u-7-8, .pure-u-1-9, .pure-u-2-9, .pure-u-4-9, .pure-u-5-9, .pure-u-6-9, .pure-u-7-9, .pure-u-8-9, .pure-u-1-10, .pure-u-3-10, .pure-u-7-10, .pure-u-9-10, .pure-u-1-11, .pure-u-2-11, .pure-u-3-11, .pure-u-4-11, .pure-u-5-11, .pure-u-6-11, .pure-u-7-11, .pure-u-8-11, .pure-u-9-11, .pure-u-10-11, .pure-u-1-12, .pure-u-5-12, .pure-u-7-12, .pure-u-9-12, .pure-u-11-12 {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto;
+}
+
+/* line 40, scss/_grid.scss */
+.pure-u-1 {
+  display: block;
+  width: 100%;
+}
+
+/* line 50, scss/_grid.scss */
+.pure-u-1-2 {
+  width: 50%;
+}
+
+/* line 54, scss/_grid.scss */
+.pure-offset-1-2 {
+  margin-left: 50%;
+}
+
+/* line 58, scss/_grid.scss */
+.pure-u-1-3 {
+  width: 33.33333%;
+}
+
+/* line 62, scss/_grid.scss */
+.pure-offset-1-3 {
+  margin-left: 33.33333%;
+}
+
+/* line 66, scss/_grid.scss */
+.pure-u-2-3 {
+  width: 66.66667%;
+}
+
+/* line 70, scss/_grid.scss */
+.pure-offset-2-3 {
+  margin-left: 66.66667%;
+}
+
+/* line 74, scss/_grid.scss */
+.pure-u-1-4 {
+  width: 25%;
+}
+
+/* line 78, scss/_grid.scss */
+.pure-offset-1-4 {
+  margin-left: 25%;
+}
+
+/* line 82, scss/_grid.scss */
+.pure-u-3-4 {
+  width: 75%;
+}
+
+/* line 86, scss/_grid.scss */
+.pure-offset-3-4 {
+  margin-left: 75%;
+}
+
+/* line 90, scss/_grid.scss */
+.pure-u-1-5 {
+  width: 20%;
+}
+
+/* line 94, scss/_grid.scss */
+.pure-offset-1-5 {
+  margin-left: 20%;
+}
+
+/* line 98, scss/_grid.scss */
+.pure-u-2-5 {
+  width: 40%;
+}
+
+/* line 102, scss/_grid.scss */
+.pure-offset-2-5 {
+  margin-left: 40%;
+}
+
+/* line 106, scss/_grid.scss */
+.pure-u-3-5 {
+  width: 60%;
+}
+
+/* line 110, scss/_grid.scss */
+.pure-offset-3-5 {
+  margin-left: 60%;
+}
+
+/* line 114, scss/_grid.scss */
+.pure-u-4-5 {
+  width: 80%;
+}
+
+/* line 118, scss/_grid.scss */
+.pure-offset-4-5 {
+  margin-left: 80%;
+}
+
+/* line 122, scss/_grid.scss */
+.pure-u-1-6 {
+  width: 16.66667%;
+}
+
+/* line 126, scss/_grid.scss */
+.pure-offset-1-6 {
+  margin-left: 16.66667%;
+}
+
+/* line 130, scss/_grid.scss */
+.pure-u-5-6 {
+  width: 83.33333%;
+}
+
+/* line 134, scss/_grid.scss */
+.pure-offset-5-6 {
+  margin-left: 83.33333%;
+}
+
+/* line 138, scss/_grid.scss */
+.pure-u-1-7 {
+  width: 14.28571%;
+}
+
+/* line 142, scss/_grid.scss */
+.pure-offset-1-7 {
+  margin-left: 14.28571%;
+}
+
+/* line 146, scss/_grid.scss */
+.pure-u-2-7 {
+  width: 28.57143%;
+}
+
+/* line 150, scss/_grid.scss */
+.pure-offset-2-7 {
+  margin-left: 28.57143%;
+}
+
+/* line 154, scss/_grid.scss */
+.pure-u-3-7 {
+  width: 42.85714%;
+}
+
+/* line 158, scss/_grid.scss */
+.pure-offset-3-7 {
+  margin-left: 42.85714%;
+}
+
+/* line 162, scss/_grid.scss */
+.pure-u-4-7 {
+  width: 57.14286%;
+}
+
+/* line 166, scss/_grid.scss */
+.pure-offset-4-7 {
+  margin-left: 57.14286%;
+}
+
+/* line 170, scss/_grid.scss */
+.pure-u-5-7 {
+  width: 71.42857%;
+}
+
+/* line 174, scss/_grid.scss */
+.pure-offset-5-7 {
+  margin-left: 71.42857%;
+}
+
+/* line 178, scss/_grid.scss */
+.pure-u-6-7 {
+  width: 85.71429%;
+}
+
+/* line 182, scss/_grid.scss */
+.pure-offset-6-7 {
+  margin-left: 85.71429%;
+}
+
+/* line 186, scss/_grid.scss */
+.pure-u-1-8 {
+  width: 12.5%;
+}
+
+/* line 190, scss/_grid.scss */
+.pure-offset-1-8 {
+  margin-left: 12.5%;
+}
+
+/* line 194, scss/_grid.scss */
+.pure-u-3-8 {
+  width: 37.5%;
+}
+
+/* line 198, scss/_grid.scss */
+.pure-offset-3-8 {
+  margin-left: 37.5%;
+}
+
+/* line 202, scss/_grid.scss */
+.pure-u-5-8 {
+  width: 62.5%;
+}
+
+/* line 206, scss/_grid.scss */
+.pure-offset-5-8 {
+  margin-left: 62.5%;
+}
+
+/* line 210, scss/_grid.scss */
+.pure-u-7-8 {
+  width: 87.5%;
+}
+
+/* line 214, scss/_grid.scss */
+.pure-offset-7-8 {
+  margin-left: 87.5%;
+}
+
+/* line 218, scss/_grid.scss */
+.pure-u-1-9 {
+  width: 11.11111%;
+}
+
+/* line 222, scss/_grid.scss */
+.pure-offset-1-9 {
+  margin-left: 11.11111%;
+}
+
+/* line 226, scss/_grid.scss */
+.pure-u-2-9 {
+  width: 22.22222%;
+}
+
+/* line 230, scss/_grid.scss */
+.pure-offset-2-9 {
+  margin-left: 22.22222%;
+}
+
+/* line 234, scss/_grid.scss */
+.pure-u-4-9 {
+  width: 44.44444%;
+}
+
+/* line 238, scss/_grid.scss */
+.pure-offset-4-9 {
+  margin-left: 44.44444%;
+}
+
+/* line 242, scss/_grid.scss */
+.pure-u-5-9 {
+  width: 55.55556%;
+}
+
+/* line 246, scss/_grid.scss */
+.pure-offset-5-9 {
+  margin-left: 55.55556%;
+}
+
+/* line 250, scss/_grid.scss */
+.pure-u-6-9 {
+  width: 66.66667%;
+}
+
+/* line 254, scss/_grid.scss */
+.pure-offset-6-9 {
+  margin-left: 66.66667%;
+}
+
+/* line 258, scss/_grid.scss */
+.pure-u-7-9 {
+  width: 77.77778%;
+}
+
+/* line 262, scss/_grid.scss */
+.pure-offset-7-9 {
+  margin-left: 77.77778%;
+}
+
+/* line 266, scss/_grid.scss */
+.pure-u-8-9 {
+  width: 88.88889%;
+}
+
+/* line 270, scss/_grid.scss */
+.pure-offset-8-9 {
+  margin-left: 88.88889%;
+}
+
+/* line 274, scss/_grid.scss */
+.pure-u-1-10 {
+  width: 10%;
+}
+
+/* line 278, scss/_grid.scss */
+.pure-offset-1-10 {
+  margin-left: 10%;
+}
+
+/* line 282, scss/_grid.scss */
+.pure-u-3-10 {
+  width: 30%;
+}
+
+/* line 286, scss/_grid.scss */
+.pure-offset-3-10 {
+  margin-left: 30%;
+}
+
+/* line 290, scss/_grid.scss */
+.pure-u-7-10 {
+  width: 70%;
+}
+
+/* line 294, scss/_grid.scss */
+.pure-offset-7-10 {
+  margin-left: 70%;
+}
+
+/* line 298, scss/_grid.scss */
+.pure-u-9-10 {
+  width: 90%;
+}
+
+/* line 302, scss/_grid.scss */
+.pure-offset-9-10 {
+  margin-left: 90%;
+}
+
+/* line 306, scss/_grid.scss */
+.pure-u-1-11 {
+  width: 9.09091%;
+}
+
+/* line 310, scss/_grid.scss */
+.pure-offset-1-11 {
+  margin-left: 9.09091%;
+}
+
+/* line 314, scss/_grid.scss */
+.pure-u-2-11 {
+  width: 18.18182%;
+}
+
+/* line 318, scss/_grid.scss */
+.pure-offset-2-11 {
+  margin-left: 18.18182%;
+}
+
+/* line 322, scss/_grid.scss */
+.pure-u-3-11 {
+  width: 27.27273%;
+}
+
+/* line 326, scss/_grid.scss */
+.pure-offset-3-11 {
+  margin-left: 27.27273%;
+}
+
+/* line 330, scss/_grid.scss */
+.pure-u-4-11 {
+  width: 36.36364%;
+}
+
+/* line 334, scss/_grid.scss */
+.pure-offset-4-11 {
+  margin-left: 36.36364%;
+}
+
+/* line 338, scss/_grid.scss */
+.pure-u-5-11 {
+  width: 45.45455%;
+}
+
+/* line 342, scss/_grid.scss */
+.pure-offset-5-11 {
+  margin-left: 45.45455%;
+}
+
+/* line 346, scss/_grid.scss */
+.pure-u-6-11 {
+  width: 54.54545%;
+}
+
+/* line 350, scss/_grid.scss */
+.pure-offset-6-11 {
+  margin-left: 54.54545%;
+}
+
+/* line 354, scss/_grid.scss */
+.pure-u-7-11 {
+  width: 63.63636%;
+}
+
+/* line 358, scss/_grid.scss */
+.pure-offset-7-11 {
+  margin-left: 63.63636%;
+}
+
+/* line 362, scss/_grid.scss */
+.pure-u-8-11 {
+  width: 72.72727%;
+}
+
+/* line 366, scss/_grid.scss */
+.pure-offset-8-11 {
+  margin-left: 72.72727%;
+}
+
+/* line 370, scss/_grid.scss */
+.pure-u-9-11 {
+  width: 81.81818%;
+}
+
+/* line 374, scss/_grid.scss */
+.pure-offset-9-11 {
+  margin-left: 81.81818%;
+}
+
+/* line 378, scss/_grid.scss */
+.pure-u-10-11 {
+  width: 90.90909%;
+}
+
+/* line 382, scss/_grid.scss */
+.pure-offset-10-11 {
+  margin-left: 90.90909%;
+}
+
+/* line 386, scss/_grid.scss */
+.pure-u-1-12 {
+  width: 8.33333%;
+}
+
+/* line 390, scss/_grid.scss */
+.pure-offset-1-12 {
+  margin-left: 8.33333%;
+}
+
+/* line 394, scss/_grid.scss */
+.pure-u-5-12 {
+  width: 41.66667%;
+}
+
+/* line 398, scss/_grid.scss */
+.pure-offset-5-12 {
+  margin-left: 41.66667%;
+}
+
+/* line 402, scss/_grid.scss */
+.pure-u-7-12 {
+  width: 58.33333%;
+}
+
+/* line 406, scss/_grid.scss */
+.pure-offset-7-12 {
+  margin-left: 58.33333%;
+}
+
+/* line 410, scss/_grid.scss */
+.pure-u-9-12 {
+  width: 75%;
+}
+
+/* line 414, scss/_grid.scss */
+.pure-offset-9-12 {
+  margin-left: 75%;
+}
+
+/* line 418, scss/_grid.scss */
+.pure-u-11-12 {
+  width: 91.66667%;
+}
+
+/* line 422, scss/_grid.scss */
+.pure-offset-11-12 {
+  margin-left: 91.66667%;
+}
+
+/* line 432, scss/_grid.scss */
+.pure-g-r {
+  letter-spacing: -0.31em;
+  *letter-spacing: normal;
+  word-spacing: -0.43em;
+}
+
+/* line 440, scss/_grid.scss */
+.opera-only :-o-prefocus,
+.pure-g-r {
+  word-spacing: -0.43em;
+}
+
+/* line 445, scss/_grid.scss */
+.pure-g-r img {
+  max-width: 100%;
+}
+
+@media (min-width: 980px) {
+  /* line 452, scss/_grid.scss */
+  .pure-visible-phone {
+    display: none;
+  }
+
+  /* line 453, scss/_grid.scss */
+  .pure-visible-tablet {
+    display: none;
+  }
+
+  /* line 457, scss/_grid.scss */
+  .pure-hidden-desktop {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  /* line 464, scss/_grid.scss */
+  .pure-g-r > [class^="pure-u"] {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  /* line 473, scss/_grid.scss */
+  .pure-g-r > [class^="pure-u"] {
+    width: 100%;
+  }
+
+  /* line 477, scss/_grid.scss */
+  .pure-hidden-phone {
+    display: none;
+  }
+
+  /* line 479, scss/_grid.scss */
+  .pure-visible-desktop {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  /* line 486, scss/_grid.scss */
+  .pure-hidden-tablet {
+    display: none;
+  }
+
+  /* line 488, scss/_grid.scss */
+  .pure-visible-desktop {
+    display: none;
+  }
+}
+/* line 1, scss/_forms.scss */
+.form-control {
+  padding: 5px 0px;
+}
+
+/* line 5, scss/_forms.scss */
+label {
+  font-size: .9rem;
+}
+/* line 8, scss/_forms.scss */
+label.block {
+  display: block;
+}
+
+/* line 13, scss/_forms.scss */
+input {
+  border: 0px;
+  padding: 5px 10px;
+  background-color: #e4e4e4;
+  font-size: 1.1rem;
+}
+/* line 19, scss/_forms.scss */
+input[type=submit] {
+  background-color: #75c55f;
+  color: white;
+}
+
+/* line 25, scss/_forms.scss */
+form {
+  margin-bottom: 10px;
+}
+
+/* line 30, scss/_forms.scss */
+.new-game-form {
+  max-height: 200px;
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  -ms-transform: rotateX(0deg);
+  -o-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  -webkit-transform-origin: top center;
+  -moz-transform-origin: top center;
+  -ms-transform-origin: top center;
+  -o-transform-origin: top center;
+  transform-origin: top center;
+}
+/* line 36, scss/_forms.scss */
+.new-game-form.collapsed {
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  -o-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+  max-height: 0px;
+  overflow: hidden;
+}
+
+/* line 1, scss/_header.scss */
+.header {
+  background-color: #1d1b1b;
+  position: relative;
+  color: white;
+  padding: 20px;
+}
+
+/* line 8, scss/_header.scss */
+.logo {
+  color: white;
+  font-size: 1.3rem;
+}
+
+/* line 13, scss/_header.scss */
+#login-buttons {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+/* line 18, scss/_header.scss */
+#login-buttons #login-dropdown-list {
+  right: 0px;
+  left: auto;
+  top: 40px;
+}
+/* line 24, scss/_header.scss */
+#login-buttons .login-close-text {
+  float: right;
+}
+
+/* line 14, scss/main.min.scss */
+a {
+  text-decoration: none;
+  color: #1479b6;
+}
+
+/* line 19, scss/main.min.scss */
+.clearfix {
+  *zoom: 1;
+}
+/* line 22, ../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+/* line 23, scss/main.min.scss */
+.strong {
+  font-weight: 600;
+}
+
+/* line 27, scss/main.min.scss */
+.small {
+  font-size: .9rem;
+}
+
+/* line 31, scss/main.min.scss */
+.pull-left {
+  float: left;
+}
+
+/* line 35, scss/main.min.scss */
+.wrapper {
+  max-width: 980px;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* line 41, scss/main.min.scss */
+.alert, .alert-error {
+  padding: 5px 10px;
+  width: 100%;
+}
+/* line 45, scss/main.min.scss */
+.alert.green-alert, .alert.success, .alert-error.green-alert, .alert-error.success {
+  background-color: #75c55f;
+  color: white;
+}
+/* line 49, scss/main.min.scss */
+.alert.green-alert a, .alert.success a, .alert-error.green-alert a, .alert-error.success a {
+  color: #1479b6;
+}
+/* line 53, scss/main.min.scss */
+.alert.green-alert .close-btn, .alert.success .close-btn, .alert-error.green-alert .close-btn, .alert-error.success .close-btn {
+  background-color: #468b33;
+  color: white;
+}
+/* line 59, scss/main.min.scss */
+.alert.error, .alert-error.error {
+  background-color: #e73d1f;
+  color: white;
+}
+
+/* line 65, scss/main.min.scss */
+.errors {
+  padding-top: 10px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 71, scss/main.min.scss */
+.content {
+  padding: 32px 0px;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+/* line 75, scss/main.min.scss */
+.content.with-errors {
+  padding: 64px 0px;
+}
+
+/* line 80, scss/main.min.scss */
+.game-lobby {
+  padding: 15px;
+  background-color: #e4e4e4;
+}
+/* line 84, scss/main.min.scss */
+.game-lobby .game {
+  padding: 15px;
+  background-color: white;
+}
+/* line 88, scss/main.min.scss */
+.game-lobby .game.in-game {
+  background-color: rgba(117, 197, 95, 0.5);
+}
+
+/* line 94, scss/main.min.scss */
+.in-game-message {
+  background-color: #75c55f;
+}
+
+/* line 98, scss/main.min.scss */
+.game-name {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+/* line 103, scss/main.min.scss */
+.player-count {
+  font-size: .8rem;
+}
+
+/* line 108, scss/main.min.scss */
+.player-list li {
+  display: block;
+  background-color: #e4e4e4;
+  padding: 5px;
+  margin-bottom: 10px;
+}

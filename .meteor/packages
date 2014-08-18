@@ -7,7 +7,6 @@ standard-app-packages
 iron-router
 accounts-password
 accounts-base
-accounts-facebook
 accounts-twitter
 spin
 accounts-ui

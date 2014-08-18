@@ -1,12 +1,14 @@
 <template name="lobby">
-	{{#if currentUser}}
-		<button class="btn create-game-btn">Create Game</button>
+	{{#if inGame}}
+		<p class="alert green-alert"> You are currently in <span class="strong">{{inGame}}</span>. Please <a href="/games/{{gameId}}">rejoin</a> the game, or <a href="#" class="leave-game-btn">leave it.</a></p>
+	{{else}}
+		<button class="btn green-btn create-game-btn">Create Game</button>
 
 		{{> newGameForm}}
 	{{/if}}
 
 	<div class="game-lobby">
-		<h4>Lobby</h4>
+		<h4 class="strong">Lobby</h4>
 		{{#each games}}
 			{{> lobbyGameView}}
 		{{/each}}

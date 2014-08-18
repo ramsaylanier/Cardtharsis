@@ -4,7 +4,8 @@ Template.newGameForm.events({
 
 		var game = {
 			name: $('.game-name-field').val(),
-			isPublic: $('.is-public-field').prop('checked')
+			isPublic: $('.is-public-field').prop('checked'),
+			creator: Meteor.userId()
 		}
 
 		Meteor.call('createGame', game, function(error, id){
@@ -12,6 +13,7 @@ Template.newGameForm.events({
 				//call custom throwError function
 				throwError(error.reason, 'error');
 			} else {
+				$('.new-game-form').addClass('collapsed');
 				Router.go('/');
 			}
 		});

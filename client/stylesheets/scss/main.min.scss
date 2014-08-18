@@ -1,4 +1,115 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+@import "colors";
+@import "typeplate";
+@import "buttons";
+@import "grid";
+@import "forms";
+@import "header";
 
-body{
-	
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700);
+
+a{
+	text-decoration: none;
+	color: $blue;
 }
+
+.clearfix{
+	@include legacy-pie-clearfix;
+}
+
+.strong{
+	font-weight: 600;
+}
+
+.small{
+	font-size: .9rem;
+}
+
+.pull-left{
+	float: left;
+}
+
+.wrapper{
+	max-width: 980px;
+	position: relative;
+	margin: 0 auto;
+}
+
+.alert, .alert-error{
+	padding: 5px 10px;
+	width: 100%;
+
+	&.green-alert, &.success{
+		background-color: $green;
+		color: white;
+
+		a{
+			color: $blue;
+		}
+
+		.close-btn{
+			background-color: darken($green, 20%);
+			color: white;
+		}
+	}
+
+	&.error{
+		background-color: $red;
+		color: white;
+	}
+}
+
+.errors{
+	padding-top: 10px;
+	position: absolute;
+	width: 100%;
+}
+
+.content{
+	padding: 32px 0px;
+	@include transition(all 300ms ease-out);
+
+	&.with-errors{
+		padding: 64px 0px;
+	}
+}
+
+.game-lobby{
+	padding: 15px;
+	background-color: $light-grey;
+
+	.game{
+		padding: 15px;
+		background-color: white;
+
+		&.in-game{
+			background-color: fade-out($green,.5);
+		}
+	}
+}
+
+.in-game-message{
+	background-color: $green;
+}
+
+.game-name{
+	font-size: 1.8rem;
+	margin-bottom: 10px;
+}
+
+.player-count{
+	font-size: .8rem;
+}
+
+.player-list{
+	li{
+		display: block;
+		background-color: $light-grey;
+		padding: 5px;
+		margin-bottom: 10px;
+	}
+}
+

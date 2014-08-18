@@ -5,3 +5,7 @@ Meteor.publish('publicGames', function(){
 Meteor.publish('users', function(){
 	return Meteor.users.find();
 })
+
+Meteor.publish('cards', function(){
+	return Cards.find();
+})

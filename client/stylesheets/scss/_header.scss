@@ -1,0 +1,27 @@
+.header{
+	background-color: $dark-grey;
+	position: relative;
+	color: white;
+	padding: 20px;
+}
+
+.logo{
+	color: white;
+	font-size: 1.3rem;
+}
+
+#login-buttons{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+
+	#login-dropdown-list{
+		right: 0px;
+		left: auto;
+		top: 40px;
+	}
+
+	.login-close-text{
+		float: right;
+	}
+}

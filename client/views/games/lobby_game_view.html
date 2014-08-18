@@ -1,7 +1,20 @@
 <template name="lobbyGameView">
-	<div class="game">
-		<h5 class="game-name strong">{{name}}</h5>
-		<button class="btn delete-btn">Delete</button>
-		<a href="{{pathFor 'gameView'}}" class="btn join-game">Join Game</a>
+	<div class="game {{inGame}}">
+		<header class="game-header learfix">	
+			{{#if inGame}}
+				<span class="in-game-message alert">You are currently in this game</span>
+			{{/if}}
+
+			<p class="game-name strong">{{name}}<span class="game-status small">  -  {{gameStatus}}</span></p>
+			<p class="player-count "> {{players.length}} / 8 players</p>
+		</header>
+
+		<div class="pure-u-1">
+			<a href="{{pathFor 'gameView'}}" class="btn green-btn join-game">Join Game</a>
+
+			{{#if creator}}
+				<button class="btn red-btn delete-btn">Delete</button>
+			{{/if}}
+		</div>
 	</div>
 </template>

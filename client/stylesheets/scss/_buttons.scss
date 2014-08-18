@@ -1,0 +1,33 @@
+.btn{
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	font-size: 1rem;
+	@include transition(all 300ms ease-out);
+}
+
+.green-btn{
+
+	background-color: white;
+	border: 2px solid $green;
+	color: $green;
+
+	&:hover{
+		background-color: $green;
+		color: white;
+		border: 2px solid transparent;
+	}
+}
+
+.red-btn{
+
+	background-color: white;
+	border: 2px solid $red;
+	color: $red;
+
+	&:hover{
+		background-color: $red;
+		color: white;
+		border: 2px solid transparent;
+	}
+}
