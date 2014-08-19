@@ -12,16 +12,30 @@
 		</header>
 
 		<section class="players pure-u-1-5">
-			<h4>Players ({{players.count}}/8)</h4>
+			<h4>Players ({{this.players.length}}/8)</h4>
 			<ul class="player-list">
-			{{#each players}}
-				<li class="player-name">{{profile.name}}</li>
+			{{#each this.players}}
+				<li class="player-name {{czar}}">{{playerName}}</li>
 			{{/each}}
 			</ul>
 		</section>
 
-		<section class="game-area pure-u-4-5">
-		<h3>Game Board</h3>
+		<section class="czar-area pure-u-4-5">
+			{{#if cardCzar}}
+				<p> You are Card Czar</p>
+			{{else}}
+				<p>Pick a card</p>
+			{{/if}}
+
+			<div class="card black-card">
+				{{blackCard}}
+			</div>
 		</section>
-	</div>
+
+		<section class="players-cards pure-u-1">
+			{{#each playersHand}}
+				<div class="card white-card">{{Card}}</div>
+			{{/each}}
+		</section>
+</div>
 </template>

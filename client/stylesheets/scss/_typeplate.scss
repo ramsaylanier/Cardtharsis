@@ -34,6 +34,7 @@ $copy-font: "Open Sans", sans-serif;
 
 body{
 	font-family: $copy-font;
+	color: black;
 }
 
 p{
@@ -65,8 +66,8 @@ $small-print-size: 65% !default;
 // $Variable $Base-Color
 // -------------------------------------//
 
-$body-copy-color: #444 !default;
-$heading-color: #222 !default;
+$body-copy-color: #000 !default;
+$heading-color: #000 !default;
 
 
 // $Variable $Ampersand

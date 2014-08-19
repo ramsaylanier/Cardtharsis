@@ -10,7 +10,7 @@ Template.lobbyGameView.events({
 			}
 		})
 	},
-	'click .join-game': function(e, template){
+	'click .game': function(e, template){
 		var gameId = template.data._id;
 		var currentUser = Meteor.userId();
 

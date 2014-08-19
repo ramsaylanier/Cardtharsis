@@ -1,21 +1,16 @@
 .btn{
-	border: none;
+	border: 2px solid black;
+	background-color: white;
+	@include border-radius(5px);
 	padding: 5px 10px;
 	cursor: pointer;
 	font-size: 1rem;
+	color: black;
 	@include transition(all 300ms ease-out);
-}
-
-.green-btn{
-
-	background-color: white;
-	border: 2px solid $green;
-	color: $green;
 
 	&:hover{
-		background-color: $green;
+		background-color: black;
 		color: white;
-		border: 2px solid transparent;
 	}
 }
 

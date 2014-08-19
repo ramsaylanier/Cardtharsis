@@ -57,5 +57,11 @@ Meteor.methods({
 		if (loggedInUser = Games.findOne({_id: gameId}).creator){
 			Games.update({_id: gameId}, {$set: {started: true}});
 		}
+	},
+	updateGameDeck: function(gameId, gameDeck){
+		Games.update({_id: gameId}, {$set: {gameDeck: gameDeck}});
+	},
+	updatePlayersHand: function(gameId, players){
+		Games.update({_id: gameId}, {$set: {players: players} });
 	}
 })

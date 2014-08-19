@@ -11,15 +11,11 @@ label{
 }
 
 input{
-	border: 0px;
+	border: 2px solid black;
 	padding: 5px 10px;
-	background-color: $light-grey;
+	background-color: white;
 	font-size: 1.1rem;
-
-	&[type=submit]{
-		background-color: $green;
-		color: white;
-	}
+	@include border-radius(5px);
 }
 
 form{
