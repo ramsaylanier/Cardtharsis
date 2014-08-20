@@ -117,9 +117,15 @@ Template.gameView.deal = function(game){
 	_.each(game.players, function(player, index){
 		hand = _.sample(_.where(game.gameDeck, {Type: "white"}), 10);
 		player.hand = hand;
+
+		//discard each card from main gameDeck
+		_.each(player.hand, function(card){
+			game.gameDeck = _.without(game.gameDeck, card)
+		})
 	})
 
-	Meteor.call('updatePlayersHand', game._id, game.players )
+	Meteor.call('updatePlayersHand', game._id, game.players );
+	Meteor.call('updateGameDeck', game._id, game.gameDeck);
 
 }
 
@@ -140,6 +146,8 @@ Template.playerSubmissions.events({
 		var czar = _.find(game.players, function(player){
 			return player.czar == true
 		}).id;
+
+		var winner = this.player;
 
 		if (Meteor.userId() == czar){
 			Meteor.call('pickWinner', game, winner, function(error, id){

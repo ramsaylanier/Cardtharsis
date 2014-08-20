@@ -55,7 +55,7 @@ Meteor.methods({
 		var loggedInUser = this.userId;
 
 		if (loggedInUser = Games.findOne({_id: gameId}).creator){
-			Games.update({_id: gameId}, {$set: {started: true, rounds: [{blackCard: blackCard ,round: 1, players: []}]}});
+			Games.update({_id: gameId}, {$set: {started: true}, $push: {rounds: {blackCard: blackCard ,round: 1, players: []}}});
 			Meteor.call('startRound', gameId, 1);
 		}
 	},
@@ -93,6 +93,68 @@ Meteor.methods({
 		if (!game.rounds[round - 1].winner){
 			Games.update({_id: game._id, "players.id": winner}, {$inc: {"players.$.score": 1 }});
 			Games.update({_id: game._id, "rounds.round": round }, {$set: {"rounds.$.winner": winner}});
+			Meteor.call('discard', game._id);
+			Meteor.call('updateCzar', game._id);
 		}
+		// Meteor.call('newRound', game);
+	},
+	discard: function(gameId){
+
+		var game = Games.findOne(gameId);
+		//loop through each player
+		_.each(game.players, function(player){
+			var playerId = player.id;
+
+			//find the players card selection
+			var selection = _.find(game.rounds[game.rounds.length - 1].players, function(element){
+				return element.player == playerId;
+			});
+
+			//if it exists
+			if (selection){
+				var removedHand = _.find(player.hand, function(card){
+					return card._id == selection.selection;
+				})
+				
+				//remove the card from the hand
+				player.hand = _.without(player.hand, removedHand);
+
+				//add a new card from the end of the gameDeck
+				var newCard = game.gameDeck.pop();
+
+				//add new card to player's hand
+				player.hand.push(newCard);
+			}
+		})
+
+		Meteor.call('updatePlayersHand', game._id, game.players);
+	},
+	newRound: function(game){
+		var newRoundNumber = game.rounds.length + 1;
+
+		//push new empty round to Games collection
+		Games.update({_id: game._id}, {$push: {rounds: {blackCard: null, ended: false, winner: null, round: newRoundNumber, players: []}}} );
+	},
+	updateCzar: function(gameId){
+		var game = Games.findOne(gameId);
+		_.find(game.players, function(player, index){
+			if (player.czar == true){
+				game.players[index].czar = false;
+
+				if (!game.players[index + 1]){
+					game.players[0].czar=true;
+				} else {
+					game.players[index + 1].czar=true;
+				}
+
+				return player.czar == false;
+			} else 
+				return player.czar == true;
+		})
+
+		Games.update({_id: gameId}, {$set: {players: game.players}});
+	},
+	drawNewCards: function(game){
+
 	}
 })

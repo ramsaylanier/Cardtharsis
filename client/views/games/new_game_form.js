@@ -13,8 +13,7 @@ Template.newGameForm.events({
 				//call custom throwError function
 				throwError(error.reason, 'error');
 			} else {
-				$('.new-game-form').addClass('collapsed');
-				Router.go('/');
+				Router.go('/games/' + id);
 			}
 		});
 	}
