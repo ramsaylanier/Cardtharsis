@@ -1239,15 +1239,24 @@ a {
   background-color: #e73d1f;
   color: white;
 }
+/* line 71, scss/main.min.scss */
+.alert.winner-alert, .alert-error.winner-alert {
+  color: white;
+  background-color: #e73d1f;
+  border: 2px solid #e73d1f;
+  font-weight: 600;
+  font-size: 1.3rem;
+  float: left;
+}
 
-/* line 72, scss/main.min.scss */
+/* line 81, scss/main.min.scss */
 .errors {
   padding-top: 10px;
   position: absolute;
   width: 100%;
 }
 
-/* line 78, scss/main.min.scss */
+/* line 87, scss/main.min.scss */
 .content {
   padding: 32px 0px;
   -webkit-transition: all 300ms ease-out;
@@ -1255,12 +1264,12 @@ a {
   -o-transition: all 300ms ease-out;
   transition: all 300ms ease-out;
 }
-/* line 82, scss/main.min.scss */
+/* line 91, scss/main.min.scss */
 .content.with-errors {
   padding: 74px 0px;
 }
 
-/* line 87, scss/main.min.scss */
+/* line 96, scss/main.min.scss */
 .game-lobby {
   padding: 25px;
   border: 2px solid black;
@@ -1270,7 +1279,7 @@ a {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 92, scss/main.min.scss */
+/* line 101, scss/main.min.scss */
 .game-lobby .game {
   border: 2px solid black;
   padding: 25px;
@@ -1286,13 +1295,13 @@ a {
   -o-transition: all 300ms ease-out;
   transition: all 300ms ease-out;
 }
-/* line 100, scss/main.min.scss */
+/* line 109, scss/main.min.scss */
 .game-lobby .game:hover {
   background-color: black;
   color: white;
 }
 
-/* line 107, scss/main.min.scss */
+/* line 116, scss/main.min.scss */
 .in-game-message {
   background-color: black;
   padding: 5px 10px;
@@ -1304,18 +1313,18 @@ a {
   border-radius: 5px;
 }
 
-/* line 114, scss/main.min.scss */
+/* line 123, scss/main.min.scss */
 .game-name {
   font-size: 1.8rem;
   margin-bottom: 10px;
 }
 
-/* line 119, scss/main.min.scss */
+/* line 128, scss/main.min.scss */
 .player-count {
   font-size: .8rem;
 }
 
-/* line 124, scss/main.min.scss */
+/* line 133, scss/main.min.scss */
 .game-view .game-header {
   padding: 10px;
   margin-bottom: 10px;
@@ -1326,16 +1335,16 @@ a {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 130, scss/main.min.scss */
+/* line 139, scss/main.min.scss */
 .game-view .game-header .game-name {
   float: left;
   margin-right: 10px;
 }
-/* line 136, scss/main.min.scss */
+/* line 145, scss/main.min.scss */
 .game-view .players {
   padding: 10px;
 }
-/* line 139, scss/main.min.scss */
+/* line 148, scss/main.min.scss */
 .game-view .players .player-name {
   display: block;
   background-color: white;
@@ -1348,13 +1357,24 @@ a {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 147, scss/main.min.scss */
+/* line 156, scss/main.min.scss */
 .game-view .players .player-name.true {
   background-color: black;
   color: white;
 }
+/* line 161, scss/main.min.scss */
+.game-view .players .player-name .score {
+  float: right;
+}
 
-/* line 155, scss/main.min.scss */
+/* line 168, scss/main.min.scss */
+.round-timer {
+  float: right;
+  font-size: 2rem;
+  color: #e73d1f;
+}
+
+/* line 174, scss/main.min.scss */
 .card {
   width: 225px;
   height: 312px;
@@ -1368,7 +1388,7 @@ a {
   font-weight: 900;
 }
 
-/* line 164, scss/main.min.scss */
+/* line 183, scss/main.min.scss */
 .white-card {
   border: 2px solid black;
   color: black;
@@ -1379,15 +1399,51 @@ a {
   transition: all 300ms;
 }
 
-/* line 171, scss/main.min.scss */
+/* line 190, scss/main.min.scss */
 .black-card {
   background-color: black;
   color: white;
 }
 
-/* line 177, scss/main.min.scss */
-.game-view .white-card {
+/* line 195, scss/main.min.scss */
+.players-cards {
+  margin-top: 30px;
+  border-top: 2px solid black;
+  padding-top: 30px;
+}
+/* line 199, scss/main.min.scss */
+.players-cards .white-card {
   float: left;
+  position: relative;
   margin-top: 10px;
   margin-right: 10px;
+  cursor: pointer;
+}
+/* line 206, scss/main.min.scss */
+.players-cards .white-card.selected {
+  background-color: black;
+  color: white;
+}
+
+/* line 214, scss/main.min.scss */
+.czar-area .black-card {
+  float: left;
+}
+/* line 218, scss/main.min.scss */
+.czar-area .player-submissions {
+  float: left;
+  padding-left: 10px;
+}
+/* line 222, scss/main.min.scss */
+.czar-area .player-submissions .white-card {
+  float: left;
+  margin-left: -50px;
+}
+/* line 226, scss/main.min.scss */
+.czar-area .player-submissions .white-card:first-of-type {
+  margin-left: 0px;
+}
+/* line 230, scss/main.min.scss */
+.czar-area .player-submissions .white-card:hover {
+  margin-left: 50px;
 }

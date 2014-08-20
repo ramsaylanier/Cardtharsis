@@ -23,6 +23,18 @@ Template.gameView.helpers({
 		}).hand;
 
 		return hand;
+	},
+	roundOver: function(){
+		var currentRound = this.rounds.length - 1;
+
+		if (this.rounds[currentRound].ended)
+			return true
+	},
+	winner: function(){
+		var currentRound = this.rounds.length - 1;
+		var winner = this.rounds[currentRound].winner;
+		if (winner)
+			return Meteor.users.findOne(winner).username
 	}
 })
 
@@ -30,15 +42,57 @@ Template.gameView.events({
 	'click .start-game-btn': function(event, template){
 		var gameId = template.data._id;
 
-		Meteor.call('startGame', gameId, function(error, id){
+		Template.gameView.shuffleDeck(this);
+		Template.gameView.deal(this);
+
+		var blackCard = this.gameDeck[0];
+
+		Meteor.call('startGame', gameId, blackCard, function(error, id){
 			if (error)
 				throwError(error.reason, 'error')
 			else
 				$('.start-game-btn').html("Game started")
 		})
+	},
+	'click .player-card': function(event, template){
+		var game = template.data;
 
-		Template.gameView.shuffleDeck(this);
-		Template.gameView.deal(this);
+		var selection = this._id;
+		var round = game.rounds[game.rounds.length - 1];
+		var gameId = game._id;
+
+		//get list of users that have selected white cards already
+		var selected = _.pluck(round.players, 'player');
+
+		if (round.ended){
+			console.log('ended');
+			return
+		}
+
+		//check to see if current user is among those with selections
+		if (_.contains(selected, Meteor.userId())){
+
+			//update current users seleection
+			_.map(round.players, function(player){
+				if (player.player == Meteor.userId())
+					player.selection = selection;
+			})
+		} else {
+
+			//add current users selection
+			round.players.push({
+				player: Meteor.userId(),
+				selection: selection
+			})
+		}
+
+		$('.player-card').removeClass('selected');
+		$(event.target).addClass('selected');
+
+		Meteor.call('updateRound', gameId, round, function(error, id){
+			if (error)
+				throwError(error.reason, 'error')
+		});
 	}
 })
 
@@ -61,10 +115,37 @@ Template.gameView.shuffleDeck = function(game){
 
 Template.gameView.deal = function(game){
 	_.each(game.players, function(player, index){
-		hand = _.sample(game.gameDeck, 10);
+		hand = _.sample(_.where(game.gameDeck, {Type: "white"}), 10);
 		player.hand = hand;
 	})
 
 	Meteor.call('updatePlayersHand', game._id, game.players )
 
 }
+
+
+Template.playerSubmissions.helpers({
+	submissions: function(){
+		var currentRound = this.rounds.length - 1;
+		return(this.rounds[currentRound].players);
+	},
+	card: function(){
+		return Cards.findOne({_id: this.selection}).Card;
+	}
+})
+
+Template.playerSubmissions.events({
+	'click .submitted-card': function(e, template){
+		var game = template.data;
+		var czar = _.find(game.players, function(player){
+			return player.czar == true
+		}).id;
+
+		if (Meteor.userId() == czar){
+			Meteor.call('pickWinner', game, winner, function(error, id){
+				if (error)
+					throwError(error.reason, 'error')
+			})
+		}
+	}
+})

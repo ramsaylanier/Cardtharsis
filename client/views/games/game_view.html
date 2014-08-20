@@ -3,39 +3,70 @@
 		<header class="game-header pure-u-1 pull-left">
 			<h3 class="game-name">{{name}}</h3>
 			{{#if creator}}
-				<!-- {{#if started}}
+				{{#if started}}
 					<button class="btn end-game-btn">End Game</button>
-				{{else}} -->
+				{{else}}
 					<button class="btn start-game-btn">Start Game</button>
-				<!-- {{/if}} -->
+				{{/if}}
 			{{/if}}
+
+			<div class="round-timer">
+				{{clock}}
+			</div>
 		</header>
 
 		<section class="players pure-u-1-5">
 			<h4>Players ({{this.players.length}}/8)</h4>
 			<ul class="player-list">
 			{{#each this.players}}
-				<li class="player-name {{czar}}">{{playerName}}</li>
+				<li class="player-name {{czar}}">{{playerName}} <span class="score">{{score}}</span></li>
 			{{/each}}
 			</ul>
 		</section>
 
 		<section class="czar-area pure-u-4-5">
-			{{#if cardCzar}}
-				<p> You are Card Czar</p>
-			{{else}}
-				<p>Pick a card</p>
+
+			{{#if winner}}
+				<p class="alert winner-alert"> {{winner}} wins this round!</p>
 			{{/if}}
 
-			<div class="card black-card">
-				{{blackCard}}
-			</div>
+			{{#if cardCzar}}
+				<p class="alert success black-alert"> You are Card Czar</p>
+			{{/if}}
+
+			
+			{{#if started}}
+				<div class="card black-card">
+					{{blackCard}}
+				</div>
+			{{else}}
+				<p class="alert">Waiting for more players to join</p>
+			{{/if}}
+
+			{{#if roundOver}}
+				{{> playerSubmissions}}
+			{{/if}}
 		</section>
 
 		<section class="players-cards pure-u-1">
-			{{#each playersHand}}
-				<div class="card white-card">{{Card}}</div>
-			{{/each}}
+			{{#if cardCzar}}
+				<p class="alert success">Waiting for players to select cards</p>
+			{{else}}
+				{{#each playersHand}}
+					<div class="card white-card player-card" data-card="{{_id}}">{{Card}}</div>
+				{{/each}}
+			{{/if}}
 		</section>
 </div>
+</template>
+
+
+<template name="playerSubmissions">
+	<div class="player-submissions">
+		{{#each submissions}}
+			<div class="card white-card submitted-card">
+				{{card}}
+			</div>
+		{{/each}}
+	</div>
 </template>

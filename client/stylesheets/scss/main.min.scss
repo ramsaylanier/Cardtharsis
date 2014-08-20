@@ -67,6 +67,15 @@ a{
 		background-color: $red;
 		color: white;
 	}
+
+	&.winner-alert{
+		color: white;
+		background-color: $red;
+		border: 2px solid $red;
+		font-weight: 600;
+		font-size: 1.3rem;
+		float: left;
+	}
 }
 
 .errors{
@@ -148,8 +157,18 @@ a{
 				background-color: black;
 				color: white;
 			}
+
+			.score{
+				float: right;
+			}
 		}
 	}
+}
+
+.round-timer{
+	float: right;
+	font-size: 2rem;
+	color: $red;
 }
 
 .card{
@@ -173,15 +192,45 @@ a{
 	color: white;
 }
 
-.game-view{
+.players-cards{
+	margin-top: 30px;
+	border-top: 2px solid black;
+	padding-top: 30px;
 	.white-card{
 		float: left;
+		position: relative;
 		margin-top: 10px;
-		// margin-left: -50px;
-
-		// &:hover{
 		margin-right: 10px;
-		// }
+		cursor: pointer;
+
+		&.selected{
+			background-color: black;
+			color: white;
+		}
+	}
+}
+
+.czar-area{
+	.black-card{
+		float: left;
+	}
+
+	.player-submissions{
+		float: left;
+		padding-left: 10px;
+
+		.white-card{
+			float: left;
+			margin-left: -50px;
+
+			&:first-of-type{
+				margin-left: 0px;
+			}
+
+			&:hover{
+				margin-left: 50px;
+			}
+		}
 	}
 }
 
