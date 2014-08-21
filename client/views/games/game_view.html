@@ -44,7 +44,7 @@
 			{{/if}}
 
 			{{#if roundOver}}
-				{{> playerSubmissions}}
+				{{> playerSubmissions }}
 			{{/if}}
 		</section>
 
@@ -64,7 +64,7 @@
 <template name="playerSubmissions">
 	<div class="player-submissions">
 		{{#each submissions}}
-			<div class="card white-card submitted-card">
+			<div class="card white-card submitted-card {{winningCard ..}}">
 				{{card}}
 			</div>
 		{{/each}}

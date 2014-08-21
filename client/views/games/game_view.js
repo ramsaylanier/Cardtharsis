@@ -15,7 +15,9 @@ Template.gameView.helpers({
 			return true
 	},
 	blackCard: function(){
-		return this.gameDeck[0].Card
+		var currentRound = this.rounds.length - 1;
+		var blackCard = this.rounds[currentRound].blackCard;
+		return blackCard.Card;
 	},
 	playersHand: function(){
 		hand = _.find(this.players, function(player){
@@ -25,16 +27,20 @@ Template.gameView.helpers({
 		return hand;
 	},
 	roundOver: function(){
-		var currentRound = this.rounds.length - 1;
+		if (this.rounds){
+			var currentRound = this.rounds.length - 1;
 
-		if (this.rounds[currentRound].ended)
-			return true
+			if (this.rounds[currentRound].ended)
+				return true
+		}
 	},
 	winner: function(){
-		var currentRound = this.rounds.length - 1;
-		var winner = this.rounds[currentRound].winner;
-		if (winner)
-			return Meteor.users.findOne(winner).username
+		if (this.rounds){
+			var currentRound = this.rounds.length - 1;
+			var winner = this.rounds[currentRound].winner;
+			if (winner)
+				return Meteor.users.findOne(winner).username
+		}
 	}
 })
 
@@ -45,9 +51,7 @@ Template.gameView.events({
 		Template.gameView.shuffleDeck(this);
 		Template.gameView.deal(this);
 
-		var blackCard = this.gameDeck[0];
-
-		Meteor.call('startGame', gameId, blackCard, function(error, id){
+		Meteor.call('startGame', gameId, function(error, id){
 			if (error)
 				throwError(error.reason, 'error')
 			else
@@ -65,7 +69,6 @@ Template.gameView.events({
 		var selected = _.pluck(round.players, 'player');
 
 		if (round.ended){
-			console.log('ended');
 			return
 		}
 
@@ -137,6 +140,14 @@ Template.playerSubmissions.helpers({
 	},
 	card: function(){
 		return Cards.findOne({_id: this.selection}).Card;
+	},
+	winningCard: function(game){
+		
+		currentRound = game.rounds.length - 1;
+		winner = game.rounds[currentRound].winner;
+
+		if (this.player == winner)
+			return 'winner';
 	}
 })
 
@@ -152,7 +163,7 @@ Template.playerSubmissions.events({
 		if (Meteor.userId() == czar){
 			Meteor.call('pickWinner', game, winner, function(error, id){
 				if (error)
-					throwError(error.reason, 'error')
+					throwError(error.reason, 'error');
 			})
 		}
 	}

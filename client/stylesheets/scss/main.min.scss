@@ -230,6 +230,11 @@ a{
 			&:hover{
 				margin-left: 50px;
 			}
+
+			&.winner{
+				border: 5px solid $red;
+				@include scale3d(1.1, 1.1, 1.1);
+			}
 		}
 	}
 }

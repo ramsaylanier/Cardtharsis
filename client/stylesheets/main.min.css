@@ -1447,3 +1447,12 @@ a {
 .czar-area .player-submissions .white-card:hover {
   margin-left: 50px;
 }
+/* line 234, scss/main.min.scss */
+.czar-area .player-submissions .white-card.winner {
+  border: 5px solid #e73d1f;
+  -webkit-transform: scale3d(1.1, 1.1, 1.1);
+  -moz-transform: scale3d(1.1, 1.1, 1.1);
+  -ms-transform: scale3d(1.1, 1.1, 1.1);
+  -o-transform: scale3d(1.1, 1.1, 1.1);
+  transform: scale3d(1.1, 1.1, 1.1);
+}

@@ -51,12 +51,12 @@ Meteor.methods({
 		}
 	},
 
-	startGame: function(gameId, blackCard){
+	startGame: function(gameId){
 		var loggedInUser = this.userId;
 
 		if (loggedInUser = Games.findOne({_id: gameId}).creator){
-			Games.update({_id: gameId}, {$set: {started: true}, $push: {rounds: {blackCard: blackCard ,round: 1, players: []}}});
-			Meteor.call('startRound', gameId, 1);
+			Games.update({_id: gameId}, {$set: {started: true}});
+			Meteor.call('newRound', gameId, 1);
 		}
 	},
 	startRound: function(gameId, round){
@@ -74,9 +74,6 @@ Meteor.methods({
 			}
 		}, 1000);
 	},
-	endRound: function(){
-
-	},	
 	updateGameDeck: function(gameId, gameDeck){
 		Games.update({_id: gameId}, {$set: {gameDeck: gameDeck}});
 	},
@@ -85,7 +82,6 @@ Meteor.methods({
 	},
 	updateRound: function(gameId, round){
 		Games.update({_id: gameId, "rounds.round": round.round}, {$set: { "rounds.$": round }});
-		console.log(Games.findOne());
 	},
 	pickWinner: function(game, winner){
 		var round = game.rounds.length;
@@ -95,8 +91,11 @@ Meteor.methods({
 			Games.update({_id: game._id, "rounds.round": round }, {$set: {"rounds.$.winner": winner}});
 			Meteor.call('discard', game._id);
 			Meteor.call('updateCzar', game._id);
+
+			Meteor.setTimeout(function(){
+				Meteor.call('newRound', game._id);
+			}, 10000);
 		}
-		// Meteor.call('newRound', game);
 	},
 	discard: function(gameId){
 
@@ -126,14 +125,26 @@ Meteor.methods({
 				player.hand.push(newCard);
 			}
 		})
-
+		Meteor.call('updateGameDeck', game._id, game.gameDeck);
 		Meteor.call('updatePlayersHand', game._id, game.players);
 	},
-	newRound: function(game){
-		var newRoundNumber = game.rounds.length + 1;
+	newRound: function(gameId){
+		var game = Games.findOne(gameId);
+		var newRoundNumber = 1;
+
+		//check to see if this is the first round
+		if (game.rounds)
+			newRoundNumber = game.rounds.length + 1;
+
+		//pull the next black card from the front of the gameDeck
+		var blackCard = game.gameDeck.shift();
 
 		//push new empty round to Games collection
-		Games.update({_id: game._id}, {$push: {rounds: {blackCard: null, ended: false, winner: null, round: newRoundNumber, players: []}}} );
+		Games.update({_id: game._id},	{	$set: {gameDeck: game.gameDeck},
+											$push: {rounds: {blackCard: blackCard, ended: false, winner: null, round: newRoundNumber, players: []}}
+										});
+
+		Meteor.call('startRound', gameId, newRoundNumber);
 	},
 	updateCzar: function(gameId){
 		var game = Games.findOne(gameId);
@@ -153,8 +164,5 @@ Meteor.methods({
 		})
 
 		Games.update({_id: gameId}, {$set: {players: game.players}});
-	},
-	drawNewCards: function(game){
-
 	}
 })
