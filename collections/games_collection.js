@@ -61,7 +61,7 @@ Meteor.methods({
 	},
 	startRound: function(gameId, round){
 		Games.update({_id: gameId, "rounds.round": round}, {$set: { "rounds.$.ended": false}});
-		var clock = 10;
+		var clock = 30;
 		var interval = Meteor.setInterval(function () {
 			clock -= 1;
 			Games.update(gameId, {$set: {clock: clock}});

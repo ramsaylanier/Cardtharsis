@@ -1,6 +1,16 @@
+Template.gameView.rendered = function(){
+	if (this.data.rounds)
+		currentRound = this.data.rounds.length;
+	else
+		currentRound = 0;
+
+	console.log(currentRound);
+}
+
 Template.gameView.helpers({
 	playerName: function(){
-		return Meteor.users.findOne({_id: this.id}).username;
+		Meteor.subscribe('playersInGame', this._id);
+		return Meteor.users.findOne({_id: this.id}).profile.name;
 	},
 	creator: function(){
 		if (Meteor.userId() == this.creator)
@@ -15,9 +25,11 @@ Template.gameView.helpers({
 			return true
 	},
 	blackCard: function(){
-		var currentRound = this.rounds.length - 1;
-		var blackCard = this.rounds[currentRound].blackCard;
-		return blackCard.Card;
+		if (this.rounds){
+			var currentRound = this.rounds.length - 1;
+			var blackCard = this.rounds[currentRound].blackCard;
+			return blackCard.Card;
+		}
 	},
 	playersHand: function(){
 		hand = _.find(this.players, function(player){

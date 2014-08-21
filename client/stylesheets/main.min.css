@@ -1326,6 +1326,7 @@ a {
 
 /* line 133, scss/main.min.scss */
 .game-view .game-header {
+  position: relative;
   padding: 10px;
   margin-bottom: 10px;
   border: 2px solid black;
@@ -1335,16 +1336,16 @@ a {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 139, scss/main.min.scss */
+/* line 140, scss/main.min.scss */
 .game-view .game-header .game-name {
   float: left;
   margin-right: 10px;
 }
-/* line 145, scss/main.min.scss */
+/* line 146, scss/main.min.scss */
 .game-view .players {
   padding: 10px;
 }
-/* line 148, scss/main.min.scss */
+/* line 149, scss/main.min.scss */
 .game-view .players .player-name {
   display: block;
   background-color: white;
@@ -1357,24 +1358,34 @@ a {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 156, scss/main.min.scss */
+/* line 157, scss/main.min.scss */
 .game-view .players .player-name.true {
   background-color: black;
   color: white;
 }
-/* line 161, scss/main.min.scss */
+/* line 162, scss/main.min.scss */
 .game-view .players .player-name .score {
   float: right;
 }
 
-/* line 168, scss/main.min.scss */
+/* line 169, scss/main.min.scss */
 .round-timer {
-  float: right;
-  font-size: 2rem;
-  color: #e73d1f;
+  position: fixed;
+  right: 50px;
+  top: 105px;
+  background-color: #e73d1f;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding: 0px 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
 }
 
-/* line 174, scss/main.min.scss */
+/* line 181, scss/main.min.scss */
 .card {
   width: 225px;
   height: 312px;
@@ -1388,7 +1399,7 @@ a {
   font-weight: 900;
 }
 
-/* line 183, scss/main.min.scss */
+/* line 190, scss/main.min.scss */
 .white-card {
   border: 2px solid black;
   color: black;
@@ -1399,19 +1410,19 @@ a {
   transition: all 300ms;
 }
 
-/* line 190, scss/main.min.scss */
+/* line 197, scss/main.min.scss */
 .black-card {
   background-color: black;
   color: white;
 }
 
-/* line 195, scss/main.min.scss */
+/* line 202, scss/main.min.scss */
 .players-cards {
   margin-top: 30px;
   border-top: 2px solid black;
   padding-top: 30px;
 }
-/* line 199, scss/main.min.scss */
+/* line 206, scss/main.min.scss */
 .players-cards .white-card {
   float: left;
   position: relative;
@@ -1419,35 +1430,35 @@ a {
   margin-right: 10px;
   cursor: pointer;
 }
-/* line 206, scss/main.min.scss */
+/* line 213, scss/main.min.scss */
 .players-cards .white-card.selected {
   background-color: black;
   color: white;
 }
 
-/* line 214, scss/main.min.scss */
+/* line 221, scss/main.min.scss */
 .czar-area .black-card {
   float: left;
 }
-/* line 218, scss/main.min.scss */
+/* line 225, scss/main.min.scss */
 .czar-area .player-submissions {
   float: left;
   padding-left: 10px;
 }
-/* line 222, scss/main.min.scss */
+/* line 229, scss/main.min.scss */
 .czar-area .player-submissions .white-card {
   float: left;
   margin-left: -50px;
 }
-/* line 226, scss/main.min.scss */
+/* line 233, scss/main.min.scss */
 .czar-area .player-submissions .white-card:first-of-type {
   margin-left: 0px;
 }
-/* line 230, scss/main.min.scss */
+/* line 237, scss/main.min.scss */
 .czar-area .player-submissions .white-card:hover {
   margin-left: 50px;
 }
-/* line 234, scss/main.min.scss */
+/* line 241, scss/main.min.scss */
 .czar-area .player-submissions .white-card.winner {
   border: 5px solid #e73d1f;
   -webkit-transform: scale3d(1.1, 1.1, 1.1);
