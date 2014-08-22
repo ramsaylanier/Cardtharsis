@@ -1,3 +1,30 @@
 <template name="gameSummary">
-	<p class="alert success">{{winner}} won the game!</p>
+	<section class="game-summary">
+		<p class="alert success">{{winner}} won the game!</p>
+		<div class="players">
+			<ul class="player-list">
+			{{#each this.players}}
+				<li class="player-name pure-u-1-8">{{playerName}} <span class="score">{{score}}</span></li>
+			{{/each}}
+			</ul>
+		</div>
+
+		<div class="round-summary pure-g">
+			{{#each this.rounds}}
+				<div class="round pure-u-1 clearfix">
+					<header class="round-header">
+						<h4 class="round-number">Round {{round}}:</h4>
+					</header>
+					<div class="czar-area clearfix">
+						<div class="player-submissions">
+							<div class="card black-card">{{blackCard.Card}}</div>
+							{{#each players}}
+								<div class="card white-card {{winner}}">{{selectionCard}}</div>
+							{{/each}}
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+	</section>
 </template>

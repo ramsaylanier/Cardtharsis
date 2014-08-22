@@ -62,8 +62,12 @@ Meteor.methods({
 	},
 	removeUserFromGame: function(gameId, userId){
 		if (gameId && userId){
-			Games.update({_id: gameId}, { $pull: { players: { id: userId}}});
-			return Meteor.users.update({ _id: userId }, {$set: { game: null}} );
+			if (Games.findOne(gameId).ended)
+				return Meteor.users.update({ _id: userId }, {$set: { game: null}} );
+			else {
+				Games.update({_id: gameId}, { $pull: { players: { id: userId}}});
+				return Meteor.users.update({ _id: userId }, {$set: { game: null}} );
+			}
 		}
 	},
 	dealHand: function(deck){
