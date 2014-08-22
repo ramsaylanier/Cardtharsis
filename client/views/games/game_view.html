@@ -2,56 +2,65 @@
 	<div class="game-view">
 		<header class="game-header clearfix">
 			<h3 class="game-name">{{name}}</h3>
-			{{#if creator}}
-				{{#if started}}
-					<button class="btn end-game-btn">End Game</button>
-				{{else}}
-					<button class="btn start-game-btn">Start Game</button>
+			{{#if ended}}
+				<p>This Game Has Ended</p>
+			{{else}}
+				{{#if creator}}
+					{{#if started}}
+						<button class="btn end-game-btn">End Game</button>
+					{{else}}
+						<button class="btn start-game-btn">Start Game</button>
+					{{/if}}
 				{{/if}}
-			{{/if}}
+		
 
-			<div class="round-timer">
-				{{clock}}
-			</div>
+				<div class="round-timer">
+					{{clock}}
+				</div>
+			{{/if}}
 		</header>
 
-		<section class="czar-area pure-u-1 clearfix">
+		{{#if ended}}
+			{{> gameSummary ..}}
+		{{else}}
+			<section class="czar-area pure-u-1 clearfix">
 
-			{{#if winner}}
-				<p class="alert winner-alert"> {{winner}} wins this round!</p>
-			{{/if}}
-			
-			{{#if started}}
-				<div class="card black-card">
-					{{blackCard}}
-				</div>
-			{{else}}
-				<p class="alert">Waiting for more players to join</p>
-			{{/if}}
+				{{#if winner}}
+					<p class="alert winner-alert"> {{winner}} wins this round!</p>
+				{{/if}}
+				
+				{{#if started}}
+					<div class="card black-card">
+						{{blackCard}}
+					</div>
+				{{else}}
+					<p class="alert">Waiting for more players to join</p>
+				{{/if}}
 
-			{{#if roundOver}}
-				{{> playerSubmissions }}
-			{{/if}}
-		</section>
+				{{#if roundOver}}
+					{{> playerSubmissions }}
+				{{/if}}
+			</section>
 
-		<section class="players">
-			<ul class="player-list">
-			{{#each this.players}}
-				<li class="player-name {{czar}} {{madeSelection ..}} pure-u-1-8">{{playerName}} <span class="score">{{score}}</span></li>
-			{{/each}}
-			</ul>
-		</section>
-
-		<section class="players-cards pure-u-1">
-			{{#if cardCzar}}
-				<h3 class="alert pure-u-1 error centered"> You are Card Czar</h3>
-			{{else}}
-				{{#each playersHand}}
-					<div class="card white-card player-card" data-card="{{_id}}">{{Card}}</div>
+			<section class="players">
+				<ul class="player-list">
+				{{#each this.players}}
+					<li class="player-name {{czar}} {{madeSelection ..}} pure-u-1-8">{{playerName}} <span class="score">{{score}}</span></li>
 				{{/each}}
-			{{/if}}
-		</section>
-</div>
+				</ul>
+			</section>
+
+			<section class="players-cards pure-u-1">
+				{{#if cardCzar}}
+					<h3 class="alert pure-u-1 error centered"> You are Card Czar</h3>
+				{{else}}
+					{{#each playersHand}}
+						<div class="card white-card player-card" data-card="{{_id}}">{{Card}}</div>
+					{{/each}}
+				{{/if}}
+			</section>
+		{{/if}}
+	</div>
 </template>
 
 

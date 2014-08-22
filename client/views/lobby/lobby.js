@@ -2,7 +2,7 @@ Meteor.subscribe('cards');
 
 Template.lobby.helpers({
 	games: function(){
-		return Games.find()
+		return Games.find({ended: false});
 	},
 	inGame: function(){
 		var gameId = Meteor.user().game;

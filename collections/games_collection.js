@@ -23,6 +23,7 @@ Meteor.methods({
 
 		var game = _.extend(_.pick(gameAttributes, 'name', 'isPublic', 'creator'), {
 			started: false,
+			ended: false,
 			gameDeck: deck,
 			players: [{id: loggedInUser, czar:true, score: 0, hand: hand}],
 			submitted: new Date().getTime(),
@@ -81,6 +82,13 @@ Meteor.methods({
 			Meteor.call('newRound', gameId, 1);
 		}
 	},
+	endGame: function(gameId){
+		var loggedInUser = this.userId;
+
+		if (loggedInUser = Games.findOne({_id: gameId}).creator){
+			Games.update({_id: gameId}, {$set: {started: false, ended: true}});
+		}
+	},
 	newRound: function(gameId){
 		var game = Games.findOne(gameId);
 		var newRoundNumber = 1;
@@ -102,20 +110,28 @@ Meteor.methods({
 	startRound: function(gameId, round){
 		var clock = 30;
 		var interval = Meteor.setInterval(function () {
-			clock -= 1;
-			Games.update(gameId, {$set: {clock: clock}});
+			if (!Games.findOne(gameId).rounds[round - 1].ended){
+				clock -= 1;
+				Games.update(gameId, {$set: {clock: clock}});
 
-			// end of game
-			if (clock === 0) {
-				// stop the clock
-				Meteor.clearInterval(interval);
-				Games.update({_id: gameId, "rounds.round": round}, {$set: { "rounds.$.ended": true}});
+				// end of game
+				if (clock === 0) {
+					// stop the clock
+					Meteor.clearInterval(interval);
+					Games.update({_id: gameId, "rounds.round": round}, {$set: { "rounds.$.ended": true}});
+				}
 			}
 		}, 1000);
 	},
 	playerSelection: function(gameId, players){
 		var currentRound = Games.findOne(gameId).rounds.length;
 		Games.update({_id: gameId, "rounds.round": currentRound}, {$set: {"rounds.$.players": players}});
+
+		//check to see if all players have made selections
+		if (Games.findOne(gameId).players.length - 1 == players.length){
+			//end round if all players have selected
+			Games.update({_id: gameId, "rounds.round": currentRound}, {$set: { clock: 0, "rounds.$.ended": true}});
+		}
 	},
 	updateGameDeck: function(gameId, gameDeck){
 		Games.update({_id: gameId}, {$set: {gameDeck: gameDeck}});

@@ -74,6 +74,14 @@ Template.gameView.events({
 				throwError(error.reason, 'error')
 		})
 	},
+	'click .end-game-btn': function(event, template){
+		var gameId = template.data._id;
+
+		Meteor.call('endGame', gameId, function(error){
+			if (error)
+				throwError(error.reason, 'error')
+		})
+	},
 	'click .player-card': function(event, template){
 		var selection = this._id,
 			game = template.data,
