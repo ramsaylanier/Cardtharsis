@@ -6,6 +6,17 @@ Meteor.methods({
 		var loggedInUser = this.userId;
 		var deck = Cards.find().fetch();
 
+		//shuffle deck
+		deck = _.shuffle(deck);
+
+		//sort so black cards are first
+		deck = _.sortBy(deck, function(card){
+			return card.Type;
+		})
+
+		var hand = Meteor.call('dealHand', deck)[0];
+			deck = Meteor.call('dealHand', deck)[1];
+
 		if (!gameAttributes.name){
 			throw new Meteor.Error(422, 'Please enter a name for your game');
 		}
@@ -13,7 +24,7 @@ Meteor.methods({
 		var game = _.extend(_.pick(gameAttributes, 'name', 'isPublic', 'creator'), {
 			started: false,
 			gameDeck: deck,
-			players: [{id: loggedInUser, czar:true, score: 0}],
+			players: [{id: loggedInUser, czar:true, score: 0, hand: hand}],
 			submitted: new Date().getTime(),
 		});
 
@@ -39,18 +50,29 @@ Meteor.methods({
 		if ( Meteor.users.findOne({_id: userId}).game )
 			throw new Meteor.Error(422, 'You are already in a game.');
 		else if (gameId && userId){
-			Games.update({_id: gameId}, { $addToSet: { players: {id: userId, czar: false, score: 0}}});
+
+			var deck = Games.findOne(gameId).gameDeck;
+			var hand = Meteor.call('dealHand', deck)[0];
+			deck = Meteor.call('dealHand', deck)[1];
+
+			Games.update({_id: gameId}, {$set: {gameDeck: deck}, $addToSet: { players: {id: userId, czar: false, score: 0, hand: hand}}});
 			return Meteor.users.update({ _id: userId } , { $set: { game: gameId }} );
 		}
 	},
-
 	removeUserFromGame: function(gameId, userId){
 		if (gameId && userId){
 			Games.update({_id: gameId}, { $pull: { players: { id: userId}}});
 			return Meteor.users.update({ _id: userId }, {$set: { game: null}} );
 		}
 	},
+	dealHand: function(deck){
+		var hand = [];
+		for (var i=0; i < 10; i++){
+			hand.push(deck.pop());
+		}
 
+		return [hand, deck];
+	},
 	startGame: function(gameId){
 		var loggedInUser = this.userId;
 
@@ -59,8 +81,25 @@ Meteor.methods({
 			Meteor.call('newRound', gameId, 1);
 		}
 	},
+	newRound: function(gameId){
+		var game = Games.findOne(gameId);
+		var newRoundNumber = 1;
+
+		//check to see if this is the first round
+		if (game.rounds)
+			newRoundNumber = game.rounds.length + 1;
+
+		//pull the next black card from the front of the gameDeck
+		var blackCard = game.gameDeck.shift();
+
+		//push new empty round to Games collection
+		Games.update({_id: game._id},	{	$set: {gameDeck: game.gameDeck},
+											$push: {rounds: {blackCard: blackCard, ended: false, winner: null, round: newRoundNumber, players: []}}
+										});
+
+		Meteor.call('startRound', gameId, newRoundNumber);
+	},
 	startRound: function(gameId, round){
-		Games.update({_id: gameId, "rounds.round": round}, {$set: { "rounds.$.ended": false}});
 		var clock = 30;
 		var interval = Meteor.setInterval(function () {
 			clock -= 1;
@@ -73,6 +112,10 @@ Meteor.methods({
 				Games.update({_id: gameId, "rounds.round": round}, {$set: { "rounds.$.ended": true}});
 			}
 		}, 1000);
+	},
+	playerSelection: function(gameId, players){
+		var currentRound = Games.findOne(gameId).rounds.length;
+		Games.update({_id: gameId, "rounds.round": currentRound}, {$set: {"rounds.$.players": players}});
 	},
 	updateGameDeck: function(gameId, gameDeck){
 		Games.update({_id: gameId}, {$set: {gameDeck: gameDeck}});
@@ -127,24 +170,6 @@ Meteor.methods({
 		})
 		Meteor.call('updateGameDeck', game._id, game.gameDeck);
 		Meteor.call('updatePlayersHand', game._id, game.players);
-	},
-	newRound: function(gameId){
-		var game = Games.findOne(gameId);
-		var newRoundNumber = 1;
-
-		//check to see if this is the first round
-		if (game.rounds)
-			newRoundNumber = game.rounds.length + 1;
-
-		//pull the next black card from the front of the gameDeck
-		var blackCard = game.gameDeck.shift();
-
-		//push new empty round to Games collection
-		Games.update({_id: game._id},	{	$set: {gameDeck: game.gameDeck},
-											$push: {rounds: {blackCard: blackCard, ended: false, winner: null, round: newRoundNumber, players: []}}
-										});
-
-		Meteor.call('startRound', gameId, newRoundNumber);
 	},
 	updateCzar: function(gameId){
 		var game = Games.findOne(gameId);

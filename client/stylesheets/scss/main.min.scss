@@ -20,6 +20,10 @@ a{
 	color: $red;
 }
 
+body{
+	background-color: #efefef;
+}
+
 .clearfix{
 	@include legacy-pie-clearfix;
 }
@@ -49,6 +53,7 @@ a{
 .alert, .alert-error{
 	padding: 5px 10px;
 	border: 2px solid black;
+	background-color: white;
 	width: 100%;
 	@include border-radius(5px);
 
@@ -135,6 +140,7 @@ a{
 		padding: 10px;
 		margin-bottom: 10px;
 		border: 2px solid black;
+		background-color: white;
 		@include border-radius(5px);
 
 		.game-name{
@@ -144,19 +150,28 @@ a{
 	}
 
 	.players{
-		padding: 10px;
 
 		.player-name{
-			display: block;
+			display: inline-block;
 			background-color: white;
-			border: 1px solid black;
+			border: 2px solid black;
 			padding: 5px;
 			margin-bottom: 10px;
 			@include border-radius(5px);
 
 			&.true{
-				background-color: black;
+				border: 2px solid $red;
+				background-color: $red;
 				color: white;
+			}
+
+			&.has-selected{
+				border: 2px solid $red;
+				
+				&:after{
+					content: '*';
+					color: $red;
+				}
 			}
 
 			.score{
@@ -200,13 +215,13 @@ a{
 }
 
 .players-cards{
-	margin-top: 30px;
+	margin-top: 15px;
 	border-top: 2px solid black;
-	padding-top: 30px;
+	padding-top: 25px;
 	.white-card{
 		float: left;
 		position: relative;
-		margin-top: 10px;
+		margin-bottom: 10px;
 		margin-right: 10px;
 		cursor: pointer;
 
@@ -218,6 +233,7 @@ a{
 }
 
 .czar-area{
+	margin-bottom: 25px;
 	.black-card{
 		float: left;
 	}

@@ -1,6 +1,6 @@
 <template name="gameView">
-	<div class="game-view pure-g">
-		<header class="game-header pure-u-1 pull-left">
+	<div class="game-view">
+		<header class="game-header clearfix">
 			<h3 class="game-name">{{name}}</h3>
 			{{#if creator}}
 				{{#if started}}
@@ -15,25 +15,11 @@
 			</div>
 		</header>
 
-		<section class="players pure-u-1-5">
-			<h4>Players ({{this.players.length}}/8)</h4>
-			<ul class="player-list">
-			{{#each this.players}}
-				<li class="player-name {{czar}}">{{playerName}} <span class="score">{{score}}</span></li>
-			{{/each}}
-			</ul>
-		</section>
-
-		<section class="czar-area pure-u-4-5">
+		<section class="czar-area pure-u-1 clearfix">
 
 			{{#if winner}}
 				<p class="alert winner-alert"> {{winner}} wins this round!</p>
 			{{/if}}
-
-			{{#if cardCzar}}
-				<p class="alert success black-alert"> You are Card Czar</p>
-			{{/if}}
-
 			
 			{{#if started}}
 				<div class="card black-card">
@@ -48,9 +34,17 @@
 			{{/if}}
 		</section>
 
+		<section class="players">
+			<ul class="player-list">
+			{{#each this.players}}
+				<li class="player-name {{czar}} {{madeSelection ..}} pure-u-1-8">{{playerName}} <span class="score">{{score}}</span></li>
+			{{/each}}
+			</ul>
+		</section>
+
 		<section class="players-cards pure-u-1">
 			{{#if cardCzar}}
-				<p class="alert success">Waiting for players to select cards</p>
+				<h3 class="alert pure-u-1 error centered"> You are Card Czar</h3>
 			{{else}}
 				{{#each playersHand}}
 					<div class="card white-card player-card" data-card="{{_id}}">{{Card}}</div>

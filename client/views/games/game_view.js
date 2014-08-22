@@ -3,8 +3,6 @@ Template.gameView.rendered = function(){
 		currentRound = this.data.rounds.length;
 	else
 		currentRound = 0;
-
-	console.log(currentRound);
 }
 
 Template.gameView.helpers({
@@ -38,6 +36,17 @@ Template.gameView.helpers({
 
 		return hand;
 	},
+	madeSelection: function(parent){
+		if (parent.rounds){
+			var currentRound = parent.rounds.length - 1;
+			var players = parent.rounds[currentRound].players;
+			var selected = _.pluck(players, 'player');
+
+			if (_.contains(selected, this.id)){
+				return 'has-selected'
+			}
+		}
+	},
 	roundOver: function(){
 		if (this.rounds){
 			var currentRound = this.rounds.length - 1;
@@ -60,90 +69,51 @@ Template.gameView.events({
 	'click .start-game-btn': function(event, template){
 		var gameId = template.data._id;
 
-		Template.gameView.shuffleDeck(this);
-		Template.gameView.deal(this);
-
 		Meteor.call('startGame', gameId, function(error, id){
 			if (error)
 				throwError(error.reason, 'error')
-			else
-				$('.start-game-btn').html("Game started")
 		})
 	},
 	'click .player-card': function(event, template){
-		var game = template.data;
+		var selection = this._id,
+			game = template.data,
+			currentRound = game.rounds.length - 1
+			players = game.rounds[currentRound].players;
 
-		var selection = this._id;
-		var round = game.rounds[game.rounds.length - 1];
-		var gameId = game._id;
+		// get list of users that have selected white cards already
+		var selected = _.pluck(players, 'player');
 
-		//get list of users that have selected white cards already
-		var selected = _.pluck(round.players, 'player');
-
-		if (round.ended){
+		if (game.rounds[currentRound].ended){
 			return
-		}
-
-		//check to see if current user is among those with selections
-		if (_.contains(selected, Meteor.userId())){
-
-			//update current users seleection
-			_.map(round.players, function(player){
-				if (player.player == Meteor.userId())
-					player.selection = selection;
-			})
 		} else {
 
-			//add current users selection
-			round.players.push({
-				player: Meteor.userId(),
-				selection: selection
-			})
+			//check to see if current user is among those with selections
+			if (_.contains(selected, Meteor.userId())){
+
+				//update current users seleection
+				_.map(players, function(player){
+					if (player.player == Meteor.userId())
+						player.selection = selection;
+				})
+			} else {
+
+				//add current users selection
+				players.push({
+					player: Meteor.userId(),
+					selection: selection
+				})
+			}
+
+			Meteor.call('playerSelection', game._id, players, function(error, id){
+				if (error)
+					throwError(error.reason, 'error');
+			});
+
+			$('.player-card').removeClass('selected');
+			$(event.target).addClass('selected');
 		}
-
-		$('.player-card').removeClass('selected');
-		$(event.target).addClass('selected');
-
-		Meteor.call('updateRound', gameId, round, function(error, id){
-			if (error)
-				throwError(error.reason, 'error')
-		});
 	}
 })
-
-Template.gameView.shuffleDeck = function(game){
-
-	//shuffle gameDeck
-	game.gameDeck = _.shuffle(game.gameDeck);
-
-	//sort so black cards are first
-	game.gameDeck = _.sortBy(game.gameDeck, function(card){
-		return card.Type;
-	})
-
-	//update game Deck
-	Meteor.call('updateGameDeck', game._id, game.gameDeck, function(error, id){
-		if (error)
-			throwError(error.reason, 'error');
-	});
-}
-
-Template.gameView.deal = function(game){
-	_.each(game.players, function(player, index){
-		hand = _.sample(_.where(game.gameDeck, {Type: "white"}), 10);
-		player.hand = hand;
-
-		//discard each card from main gameDeck
-		_.each(player.hand, function(card){
-			game.gameDeck = _.without(game.gameDeck, card)
-		})
-	})
-
-	Meteor.call('updatePlayersHand', game._id, game.players );
-	Meteor.call('updateGameDeck', game._id, game.gameDeck);
-
-}
-
 
 Template.playerSubmissions.helpers({
 	submissions: function(){
