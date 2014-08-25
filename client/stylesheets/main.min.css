@@ -481,14 +481,24 @@ p + .drop-cap {
   background-color: black;
   color: white;
 }
+/* line 16, scss/_buttons.scss */
+.btn:disabled {
+  opacity: .2;
+  cursor: inherit;
+}
+/* line 20, scss/_buttons.scss */
+.btn:disabled:hover {
+  background-color: white;
+  color: black;
+}
 
-/* line 17, scss/_buttons.scss */
+/* line 27, scss/_buttons.scss */
 .red-btn {
   background-color: white;
   border: 2px solid #e73d1f;
   color: #e73d1f;
 }
-/* line 23, scss/_buttons.scss */
+/* line 33, scss/_buttons.scss */
 .red-btn:hover {
   background-color: #e73d1f;
   color: white;
@@ -1464,18 +1474,19 @@ body {
 }
 /* line 245, scss/main.min.scss */
 .czar-area .player-submissions .white-card {
+  position: relative;
   float: left;
   margin-left: -50px;
 }
-/* line 249, scss/main.min.scss */
+/* line 250, scss/main.min.scss */
 .czar-area .player-submissions .white-card:first-of-type {
   margin-left: 0px;
 }
-/* line 253, scss/main.min.scss */
+/* line 254, scss/main.min.scss */
 .czar-area .player-submissions .white-card:hover {
   margin-left: 50px;
 }
-/* line 257, scss/main.min.scss */
+/* line 258, scss/main.min.scss */
 .czar-area .player-submissions .white-card.winner {
   border: 5px solid #e73d1f;
   -webkit-transform: scale3d(1.1, 1.1, 1.1);
@@ -1483,4 +1494,36 @@ body {
   -ms-transform: scale3d(1.1, 1.1, 1.1);
   -o-transform: scale3d(1.1, 1.1, 1.1);
   transform: scale3d(1.1, 1.1, 1.1);
+  z-index: 999;
+}
+
+/* line 267, scss/main.min.scss */
+.round {
+  padding: 15px;
+  margin-bottom: 25px;
+  background-color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 273, scss/main.min.scss */
+.round:first-of-type {
+  margin-top: 15px;
+}
+
+/* line 278, scss/main.min.scss */
+.round-number {
+  font-weight: 600;
+}
+
+/* line 282, scss/main.min.scss */
+.card-player {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  top: -30px;
+  font-size: .9rem;
 }

@@ -1,6 +1,6 @@
 <template name="gameSummary">
 	<section class="game-summary">
-		<p class="alert success">{{winner}} won the game!</p>
+		<p class="alert error">{{gameWinner}} won the game!</p>
 		<div class="players">
 			<ul class="player-list">
 			{{#each this.players}}
@@ -11,6 +11,7 @@
 
 		<div class="round-summary pure-g">
 			{{#each this.rounds}}
+				{{#if winner}}
 				<div class="round pure-u-1 clearfix">
 					<header class="round-header">
 						<h4 class="round-number">Round {{round}}:</h4>
@@ -19,11 +20,15 @@
 						<div class="player-submissions">
 							<div class="card black-card">{{blackCard.Card}}</div>
 							{{#each players}}
-								<div class="card white-card {{winner}}">{{selectionCard}}</div>
+								<div class="card white-card {{winningCard ..}}">
+									{{selectionCard}}
+									<span class="card-player">{{cardPlayer}}</span>
+								</div>
 							{{/each}}
 						</div>
 					</div>
 				</div>
+				{{/if}}
 			{{/each}}
 		</div>
 	</section>

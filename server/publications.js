@@ -11,9 +11,19 @@ Meteor.publish('currentUser', function(){
 })
 
 Meteor.publish('playersInGame', function(gameId){
-	return Meteor.users.find({game: gameId}, {fields: {"profile.name": 1}});
+	var game = Games.findOne(gameId),
+		players = _.pluck(game.players, 'id');
+
+	return Meteor.users.find({_id: {$in: players}}, {fields: {"profile.name": 1}});
 })
 
 Meteor.publish('cards', function(){
 	return Cards.find();
+})
+
+Meteor.publish('userGames', function(){
+	userGames = Meteor.users.findOne(this.userId).games;
+
+	console.log(userGames);
+	return Games.find({_id: {$in: userGames}});
 })

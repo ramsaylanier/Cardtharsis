@@ -33,7 +33,7 @@ Meteor.methods({
 		var gameId = Games.insert(game);
 
 		//add game to creator's collection
-		Meteor.users.update({_id: loggedInUser}, {$set: {game: gameId}});
+		Meteor.users.update({_id: loggedInUser}, {$set: {game: gameId}, $push: {games: gameId}});
 
 		return gameId;
 	},
@@ -48,19 +48,29 @@ Meteor.methods({
 	},
 
 	addUserToGame: function(gameId, userId){
-		if ( Meteor.users.findOne({_id: userId}).game )
+		if (Meteor.users.findOne({_id: userId, game:gameId}))
+			return;
+		else if ( Meteor.users.findOne({_id: userId}).game )
 			throw new Meteor.Error(422, 'You are already in a game.');
-		else if (gameId && userId){
+		else if(gameId && userId){
 
 			var deck = Games.findOne(gameId).gameDeck;
 			var hand = Meteor.call('dealHand', deck)[0];
 			deck = Meteor.call('dealHand', deck)[1];
 
 			Games.update({_id: gameId}, {$set: {gameDeck: deck}, $addToSet: { players: {id: userId, czar: false, score: 0, hand: hand}}});
-			return Meteor.users.update({ _id: userId } , { $set: { game: gameId }} );
+			return Meteor.users.update({ _id: userId } , {$set: {game: gameId}, $push: {games: gameId}});
 		}
 	},
 	removeUserFromGame: function(gameId, userId){
+		game = Games.findOne(gameId);
+		console.log(game.players);
+		isCzar = _.findWhere(game.players, {id: userId}).czar;
+
+		if (isCzar){
+			Meteor.call('updateCzar', gameId);
+		} 
+		
 		if (gameId && userId){
 			if (Games.findOne(gameId).ended)
 				return Meteor.users.update({ _id: userId }, {$set: { game: null}} );

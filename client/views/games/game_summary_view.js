@@ -1,5 +1,5 @@
 Template.gameSummary.helpers({
-	winner: function(){
+	gameWinner: function(){
 		var winner = _.max(this.players, function(player){
 			return player.score;
 		});
@@ -8,9 +8,16 @@ Template.gameSummary.helpers({
 			return Meteor.users.findOne({_id: winner.id}).profile.name;
 	},
 	playerName: function(){
-		// return Meteor.users.find({_id: this.id}).profile.name;
+		return Meteor.users.findOne({_id: this.id}).profile.name;
 	},
 	selectionCard: function(){
 		return Cards.findOne(this.selection).Card;
+	},
+	winningCard: function(round){
+		if (round.winner == this.player)
+			return 'winner'
+	},
+	cardPlayer: function(){
+		return Meteor.users.findOne(this.player).profile.name
 	}
 })

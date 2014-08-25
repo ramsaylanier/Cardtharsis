@@ -12,6 +12,16 @@
 		background-color: black;
 		color: white;
 	}
+
+	&:disabled{
+		opacity: .2;
+		cursor: inherit;
+
+		&:hover{
+			background-color: white;
+			color: black;
+		}
+	}
 }
 
 .red-btn{

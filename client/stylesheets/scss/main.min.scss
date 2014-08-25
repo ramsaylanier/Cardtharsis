@@ -243,6 +243,7 @@ body{
 		padding-left: 10px;
 
 		.white-card{
+			position: relative;
 			float: left;
 			margin-left: -50px;
 
@@ -257,8 +258,33 @@ body{
 			&.winner{
 				border: 5px solid $red;
 				@include scale3d(1.1, 1.1, 1.1);
+				z-index: 999;
 			}
 		}
 	}
+}
+
+.round{
+	padding: 15px;
+	margin-bottom: 25px;
+	background-color: white;
+	@include border-radius(5px);
+
+	&:first-of-type{
+		margin-top: 15px;
+	}
+}
+
+.round-number{
+	font-weight: 600;
+}
+
+.card-player{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	left: 0;
+	top: -30px;
+	font-size: .9rem;
 }
 

@@ -10,6 +10,24 @@ Template.gameView.helpers({
 		Meteor.subscribe('playersInGame', this._id);
 		return Meteor.users.findOne({_id: this.id}).profile.name;
 	},
+	playersLeft: function(){
+		var playerCount = this.players.length;
+		var playersLeft = 4 - playerCount;
+
+		if (playersLeft <= 0)
+			return "0 more players";
+		else if (playersLeft == 1)
+			return "1 more player";
+		else 
+			return playersLeft + " more players";
+	},	
+	startable: function(){
+		var playerCount = this.players.length;
+		var playersLeft = 4 - playerCount;
+
+		if (playersLeft > 0)
+			return 'disabled';
+	},
 	creator: function(){
 		if (Meteor.userId() == this.creator)
 			return true
@@ -19,7 +37,7 @@ Template.gameView.helpers({
 			return player.czar == true;
 		});
 
-		if (currentCzar.id == Meteor.userId())
+		if (currentCzar && currentCzar.id == Meteor.userId())
 			return true
 	},
 	blackCard: function(){
@@ -81,6 +99,16 @@ Template.gameView.events({
 			if (error)
 				throwError(error.reason, 'error')
 		})
+	},
+	'click .leave-game-btn': function(){
+
+		Meteor.call('removeUserFromGame', this._id, Meteor.userId(), function(error, id){
+			if (error)
+				throwError(error.reason, 'error')
+			else 
+				Router.go('/');
+		})
+
 	},
 	'click .player-card': function(event, template){
 		var selection = this._id,

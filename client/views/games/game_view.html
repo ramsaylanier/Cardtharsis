@@ -2,6 +2,7 @@
 	<div class="game-view">
 		<header class="game-header clearfix">
 			<h3 class="game-name">{{name}}</h3>
+			<button class="btn red-btn leave-game-btn pull-right">Leave Game</button>
 			{{#if ended}}
 				<p>This Game Has Ended</p>
 			{{else}}
@@ -9,7 +10,7 @@
 					{{#if started}}
 						<button class="btn end-game-btn">End Game</button>
 					{{else}}
-						<button class="btn start-game-btn">Start Game</button>
+						<button class="btn start-game-btn" {{startable}}>Start Game</button>
 					{{/if}}
 				{{/if}}
 		
@@ -34,7 +35,7 @@
 						{{blackCard}}
 					</div>
 				{{else}}
-					<p class="alert">Waiting for more players to join</p>
+					<p class="alert">Waiting for {{playersLeft}} to join</p>
 				{{/if}}
 
 				{{#if roundOver}}
