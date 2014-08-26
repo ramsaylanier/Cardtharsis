@@ -7,6 +7,7 @@
 @import "grid";
 @import "forms";
 @import "header";
+@import "dashboard";
 
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700);
@@ -104,17 +105,20 @@ body{
 	@include border-radius(5px);
 
 	.game{
-		border: 2px solid black;
-		padding: 25px;
-		margin-bottom: 15px;
 		cursor: pointer;
-		@include border-radius(5px);
-		@include transition(all 300ms ease-out);
+	}
+}
 
-		&:hover{
-			background-color: black;
-			color: white;
-		}
+.game{
+	border: 2px solid black;
+	padding: 25px;
+	margin-bottom: 15px;
+	@include border-radius(5px);
+	@include transition(all 300ms ease-out);
+
+	&:hover{
+		background-color: black;
+		color: white;
 	}
 }
 

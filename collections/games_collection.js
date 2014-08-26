@@ -2,6 +2,9 @@ Games = new Meteor.Collection('games');
 
 
 Meteor.methods({
+	resetGames: function(userId){
+		return Meteor.users.update({_id: userId}, {$set: {games: []}});
+	},
 	createGame: function(gameAttributes){
 		var loggedInUser = this.userId;
 		var deck = Cards.find().fetch();
@@ -33,7 +36,7 @@ Meteor.methods({
 		var gameId = Games.insert(game);
 
 		//add game to creator's collection
-		Meteor.users.update({_id: loggedInUser}, {$set: {game: gameId}, $push: {games: gameId}});
+		Meteor.users.update({_id: loggedInUser}, {$set: {game: gameId}});
 
 		return gameId;
 	},
@@ -59,7 +62,7 @@ Meteor.methods({
 			deck = Meteor.call('dealHand', deck)[1];
 
 			Games.update({_id: gameId}, {$set: {gameDeck: deck}, $addToSet: { players: {id: userId, czar: false, score: 0, hand: hand}}});
-			return Meteor.users.update({ _id: userId } , {$set: {game: gameId}, $push: {games: gameId}});
+			return Meteor.users.update({ _id: userId } , {$set: {game: gameId}});
 		}
 	},
 	removeUserFromGame: function(gameId, userId){
@@ -70,7 +73,7 @@ Meteor.methods({
 		if (isCzar){
 			Meteor.call('updateCzar', gameId);
 		} 
-		
+
 		if (gameId && userId){
 			if (Games.findOne(gameId).ended)
 				return Meteor.users.update({ _id: userId }, {$set: { game: null}} );
@@ -97,10 +100,15 @@ Meteor.methods({
 		}
 	},
 	endGame: function(gameId){
-		var loggedInUser = this.userId;
-
+		var loggedInUser = this.userId,
+			game = Games.findOne(gameId);
+			console.log(game.players);
+	
 		if (loggedInUser = Games.findOne({_id: gameId}).creator){
 			Games.update({_id: gameId}, {$set: {started: false, ended: true}});
+			_.each(game.players, function(player){
+				return Meteor.users.update({_id: player.id}, {$push: {games: gameId}});
+			});
 		}
 	},
 	newRound: function(gameId){

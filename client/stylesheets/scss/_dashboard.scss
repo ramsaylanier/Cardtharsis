@@ -1,0 +1,37 @@
+.dashboard{
+	padding: 15px;
+	border: 2px solid black;
+	@include border-radius(5px);
+	@include legacy-pie-clearfix;
+
+	.game{
+		padding: 10px;
+		display: block;
+		width: 30%;
+		float: left;
+		margin-right: 1%;
+		color: black;
+
+		&:hover{
+			.game-name{
+				color: white;
+			}
+
+			.player-list{
+				border-top: 1px solid white;
+			}
+		}
+	}
+}
+
+.game-name{
+	@include transition(all 300ms ease-out);
+}
+
+.player-list{
+	margin-top: 5px;
+	padding-top: 5px;
+	border-top: 1px solid black;
+	@include transition(all 300ms ease-out);
+}
+

@@ -23,7 +23,6 @@ Meteor.publish('cards', function(){
 
 Meteor.publish('userGames', function(){
 	userGames = Meteor.users.findOne(this.userId).games;
-
 	console.log(userGames);
 	return Games.find({_id: {$in: userGames}});
 })

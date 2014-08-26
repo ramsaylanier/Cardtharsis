@@ -1,4 +1,19 @@
 <template name="dashboard">
-	<button class="btn reset-games-btn">Reset Games<btn>
-	{{game}}
+	<div class="dashboard">
+		<button class="btn reset-games-btn">Reset Games</button>
+		{{#each this}}
+			<a class="game" href="games/{{_id}}">
+				<h3 class="game-name">{{name}}</h3>
+				<p><span class="strong">Rounds:</span> {{rounds.length}}</p>
+				<ul class="player-list">
+					{{#each players}}
+						<li class="pure-g">
+							<span class="strong player-name pure-u-2-3">{{playerName}}:</span> 
+							<span class="player-score pure-u-1-3">{{this.score}}</span>
+						</li>
+					{{/each}}
+				</ul>
+			</a>
+		{{/each}}
+	</div>
 </template>

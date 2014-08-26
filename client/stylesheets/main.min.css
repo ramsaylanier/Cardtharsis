@@ -65,6 +65,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
+/* line 7, scss/_colors.scss */
+.red {
+  color: #e73d1f;
+}
+
 /*!
  *
 .||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||.
@@ -221,7 +226,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 623, scss/_typeplate.scss */
 p {
-  margin: auto auto 1.5rem;
+  margin: auto auto 0rem;
 }
 
 /* line 649, scss/_typeplate.scss */
@@ -1168,25 +1173,82 @@ form {
   float: right;
 }
 
-/* line 14, scss/main.min.scss */
+/* line 1, scss/_dashboard.scss */
+.dashboard {
+  padding: 15px;
+  border: 2px solid black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  *zoom: 1;
+}
+/* line 22, ../../../../.rvm/gems/ruby-2.1.2/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.dashboard:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+/* line 7, scss/_dashboard.scss */
+.dashboard .game {
+  padding: 10px;
+  display: block;
+  width: 30%;
+  float: left;
+  margin-right: 1%;
+  color: black;
+}
+/* line 16, scss/_dashboard.scss */
+.dashboard .game:hover .game-name {
+  color: white;
+}
+/* line 20, scss/_dashboard.scss */
+.dashboard .game:hover .player-list {
+  border-top: 1px solid white;
+}
+
+/* line 27, scss/_dashboard.scss */
+.game-name {
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+
+/* line 31, scss/_dashboard.scss */
+.player-list {
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid black;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+
+/* line 15, scss/main.min.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 18, scss/main.min.scss */
+/* line 19, scss/main.min.scss */
 a {
   text-decoration: none;
   color: #e73d1f;
 }
 
-/* line 23, scss/main.min.scss */
+/* line 24, scss/main.min.scss */
 body {
   background-color: #efefef;
 }
 
-/* line 27, scss/main.min.scss */
+/* line 28, scss/main.min.scss */
 .clearfix {
   *zoom: 1;
 }
@@ -1200,34 +1262,34 @@ body {
   visibility: hidden;
 }
 
-/* line 31, scss/main.min.scss */
+/* line 32, scss/main.min.scss */
 .strong {
   font-weight: 600;
 }
 
-/* line 35, scss/main.min.scss */
+/* line 36, scss/main.min.scss */
 .small {
   font-size: .9rem;
 }
 
-/* line 39, scss/main.min.scss */
+/* line 40, scss/main.min.scss */
 .pull-left {
   float: left;
 }
 
-/* line 43, scss/main.min.scss */
+/* line 44, scss/main.min.scss */
 .pull-right {
   float: right;
 }
 
-/* line 47, scss/main.min.scss */
+/* line 48, scss/main.min.scss */
 .wrapper {
   max-width: 1180px;
   position: relative;
   margin: 0 auto;
 }
 
-/* line 53, scss/main.min.scss */
+/* line 54, scss/main.min.scss */
 .alert, .alert-error {
   padding: 5px 10px;
   border: 2px solid black;
@@ -1239,23 +1301,23 @@ body {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 60, scss/main.min.scss */
+/* line 61, scss/main.min.scss */
 .alert.success, .alert-error.success {
   background-color: black;
   color: white;
 }
-/* line 64, scss/main.min.scss */
+/* line 65, scss/main.min.scss */
 .alert.success .close-btn, .alert-error.success .close-btn {
   background-color: white;
   color: black;
 }
-/* line 70, scss/main.min.scss */
+/* line 71, scss/main.min.scss */
 .alert.error, .alert-error.error {
   border: 0px solid #e73d1f;
   background-color: #e73d1f;
   color: white;
 }
-/* line 76, scss/main.min.scss */
+/* line 77, scss/main.min.scss */
 .alert.winner-alert, .alert-error.winner-alert {
   color: white;
   background-color: #e73d1f;
@@ -1265,14 +1327,14 @@ body {
   float: left;
 }
 
-/* line 86, scss/main.min.scss */
+/* line 87, scss/main.min.scss */
 .errors {
   padding-top: 10px;
   position: absolute;
   width: 100%;
 }
 
-/* line 92, scss/main.min.scss */
+/* line 93, scss/main.min.scss */
 .content {
   padding: 32px 0px;
   -webkit-transition: all 300ms ease-out;
@@ -1280,12 +1342,12 @@ body {
   -o-transition: all 300ms ease-out;
   transition: all 300ms ease-out;
 }
-/* line 96, scss/main.min.scss */
+/* line 97, scss/main.min.scss */
 .content.with-errors {
   padding: 74px 0px;
 }
 
-/* line 101, scss/main.min.scss */
+/* line 102, scss/main.min.scss */
 .game-lobby {
   padding: 25px;
   border: 2px solid black;
@@ -1295,12 +1357,16 @@ body {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 106, scss/main.min.scss */
+/* line 107, scss/main.min.scss */
 .game-lobby .game {
+  cursor: pointer;
+}
+
+/* line 112, scss/main.min.scss */
+.game {
   border: 2px solid black;
   padding: 25px;
   margin-bottom: 15px;
-  cursor: pointer;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -1311,13 +1377,13 @@ body {
   -o-transition: all 300ms ease-out;
   transition: all 300ms ease-out;
 }
-/* line 114, scss/main.min.scss */
-.game-lobby .game:hover {
+/* line 119, scss/main.min.scss */
+.game:hover {
   background-color: black;
   color: white;
 }
 
-/* line 121, scss/main.min.scss */
+/* line 125, scss/main.min.scss */
 .in-game-message {
   background-color: black;
   padding: 5px 10px;
@@ -1329,18 +1395,18 @@ body {
   border-radius: 5px;
 }
 
-/* line 128, scss/main.min.scss */
+/* line 132, scss/main.min.scss */
 .game-name {
   font-size: 1.8rem;
   margin-bottom: 10px;
 }
 
-/* line 133, scss/main.min.scss */
+/* line 137, scss/main.min.scss */
 .player-count {
   font-size: .8rem;
 }
 
-/* line 138, scss/main.min.scss */
+/* line 142, scss/main.min.scss */
 .game-view .game-header {
   position: relative;
   padding: 10px;
@@ -1353,12 +1419,12 @@ body {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 146, scss/main.min.scss */
+/* line 150, scss/main.min.scss */
 .game-view .game-header .game-name {
   float: left;
   margin-right: 10px;
 }
-/* line 154, scss/main.min.scss */
+/* line 158, scss/main.min.scss */
 .game-view .players .player-name {
   display: inline-block;
   background-color: white;
@@ -1371,27 +1437,27 @@ body {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 162, scss/main.min.scss */
+/* line 166, scss/main.min.scss */
 .game-view .players .player-name.true {
   border: 2px solid #e73d1f;
   background-color: #e73d1f;
   color: white;
 }
-/* line 168, scss/main.min.scss */
+/* line 172, scss/main.min.scss */
 .game-view .players .player-name.has-selected {
   border: 2px solid #e73d1f;
 }
-/* line 171, scss/main.min.scss */
+/* line 175, scss/main.min.scss */
 .game-view .players .player-name.has-selected:after {
   content: '*';
   color: #e73d1f;
 }
-/* line 177, scss/main.min.scss */
+/* line 181, scss/main.min.scss */
 .game-view .players .player-name .score {
   float: right;
 }
 
-/* line 184, scss/main.min.scss */
+/* line 188, scss/main.min.scss */
 .round-timer {
   position: fixed;
   right: 50px;
@@ -1408,7 +1474,7 @@ body {
   border-radius: 5px;
 }
 
-/* line 196, scss/main.min.scss */
+/* line 200, scss/main.min.scss */
 .card {
   width: 225px;
   height: 312px;
@@ -1422,7 +1488,7 @@ body {
   font-weight: 900;
 }
 
-/* line 205, scss/main.min.scss */
+/* line 209, scss/main.min.scss */
 .white-card {
   border: 2px solid black;
   color: black;
@@ -1433,19 +1499,19 @@ body {
   transition: all 300ms;
 }
 
-/* line 212, scss/main.min.scss */
+/* line 216, scss/main.min.scss */
 .black-card {
   background-color: black;
   color: white;
 }
 
-/* line 217, scss/main.min.scss */
+/* line 221, scss/main.min.scss */
 .players-cards {
   margin-top: 15px;
   border-top: 2px solid black;
   padding-top: 25px;
 }
-/* line 221, scss/main.min.scss */
+/* line 225, scss/main.min.scss */
 .players-cards .white-card {
   float: left;
   position: relative;
@@ -1453,40 +1519,40 @@ body {
   margin-right: 10px;
   cursor: pointer;
 }
-/* line 228, scss/main.min.scss */
+/* line 232, scss/main.min.scss */
 .players-cards .white-card.selected {
   background-color: black;
   color: white;
 }
 
-/* line 235, scss/main.min.scss */
+/* line 239, scss/main.min.scss */
 .czar-area {
   margin-bottom: 25px;
 }
-/* line 237, scss/main.min.scss */
+/* line 241, scss/main.min.scss */
 .czar-area .black-card {
   float: left;
 }
-/* line 241, scss/main.min.scss */
+/* line 245, scss/main.min.scss */
 .czar-area .player-submissions {
   float: left;
   padding-left: 10px;
 }
-/* line 245, scss/main.min.scss */
+/* line 249, scss/main.min.scss */
 .czar-area .player-submissions .white-card {
   position: relative;
   float: left;
   margin-left: -50px;
 }
-/* line 250, scss/main.min.scss */
+/* line 254, scss/main.min.scss */
 .czar-area .player-submissions .white-card:first-of-type {
   margin-left: 0px;
 }
-/* line 254, scss/main.min.scss */
+/* line 258, scss/main.min.scss */
 .czar-area .player-submissions .white-card:hover {
   margin-left: 50px;
 }
-/* line 258, scss/main.min.scss */
+/* line 262, scss/main.min.scss */
 .czar-area .player-submissions .white-card.winner {
   border: 5px solid #e73d1f;
   -webkit-transform: scale3d(1.1, 1.1, 1.1);
@@ -1497,7 +1563,7 @@ body {
   z-index: 999;
 }
 
-/* line 267, scss/main.min.scss */
+/* line 271, scss/main.min.scss */
 .round {
   padding: 15px;
   margin-bottom: 25px;
@@ -1508,17 +1574,17 @@ body {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 273, scss/main.min.scss */
+/* line 277, scss/main.min.scss */
 .round:first-of-type {
   margin-top: 15px;
 }
 
-/* line 278, scss/main.min.scss */
+/* line 282, scss/main.min.scss */
 .round-number {
   font-weight: 600;
 }
 
-/* line 282, scss/main.min.scss */
+/* line 286, scss/main.min.scss */
 .card-player {
   position: absolute;
   width: 100%;
