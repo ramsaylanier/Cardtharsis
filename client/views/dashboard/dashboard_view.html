@@ -1,6 +1,6 @@
 <template name="dashboard">
 	<div class="dashboard">
-		<button class="btn reset-games-btn">Reset Games</button>
+		<!-- <button class="btn reset-games-btn">Reset Games</button> -->
 		{{#each this}}
 			<a class="game" href="games/{{_id}}">
 				<h3 class="game-name">{{name}}</h3>
@@ -14,6 +14,8 @@
 					{{/each}}
 				</ul>
 			</a>
+		{{else}}
+			You haven't played any games!
 		{{/each}}
 	</div>
 </template>

@@ -1,4 +1,6 @@
 Template.gameView.rendered = function(){
+	Meteor.subscribe('playersInGame', this.data._id);
+
 	if (this.data.rounds)
 		currentRound = this.data.rounds.length;
 	else
@@ -7,7 +9,6 @@ Template.gameView.rendered = function(){
 
 Template.gameView.helpers({
 	playerName: function(){
-		Meteor.subscribe('playersInGame', this._id);
 		return Meteor.users.findOne({_id: this.id}).profile.name;
 	},
 	playersLeft: function(){

@@ -2,11 +2,10 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "iron-router": {
-        "version": "0.8.2"
-      },
+      "iron-router": {},
       "spin": {},
-      "moment": {}
+      "moment": {},
+      "fast-render": {}
     },
     "packages": {
       "iron-router": {
@@ -23,6 +22,11 @@
         "git": "https://github.com/acreeger/meteor-moment.git",
         "tag": "v2.8.1",
         "commit": "722ea63783d594341023836b7d418ab2567dab8c"
+      },
+      "fast-render": {
+        "git": "https://github.com/arunoda/meteor-fast-render.git",
+        "tag": "v1.0.0",
+        "commit": "acbc04982025fe78cebb8865b5a04689741d4b0b"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",

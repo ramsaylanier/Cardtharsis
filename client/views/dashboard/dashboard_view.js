@@ -1,4 +1,4 @@
-Template.dashboard.created = function(){
+Template.dashboard.rendered = function(){
 	_.each(this.data.fetch(), function(game){
 		Meteor.subscribe('playersInGame', game._id)
 	});

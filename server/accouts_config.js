@@ -3,6 +3,8 @@ Accounts.onCreateUser(function(options, user) {
 	    user.profile = options.profile;
 	else 
 		 user.profile = {name: user.username};
+
+	user.games = [];
 		
   return user;
 });

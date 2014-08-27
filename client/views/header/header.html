@@ -3,7 +3,9 @@
 		<div class="wrapper">
 			<a href="/" class="logo">CARDTHARSIS</a>
 
-			<a href="{{pathFor 'dashboard'}}">Dashboard</a>
+			{{#if currentUser}}
+				<a href="{{pathFor 'dashboard'}}">Dashboard</a>
+			{{/if}}
 			{{> loginButtons}}
 		</div>
 	</header>
