@@ -23,7 +23,6 @@ Template.lobbyGameView.events({
 				throwError(error.reason, 'error')
 			} else {
 				Router.go('/games/'+ gameId);
-				throwError('Welcome to the game!', 'success')
 			}
 		})
 	}

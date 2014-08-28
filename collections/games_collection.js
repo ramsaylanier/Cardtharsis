@@ -57,9 +57,16 @@ Meteor.methods({
 			throw new Meteor.Error(422, 'You are already in a game.');
 		else if(gameId && userId){
 
-			var deck = Games.findOne(gameId).gameDeck;
-			var hand = Meteor.call('dealHand', deck)[0];
+			var game = Games.findOne(gameId),
+				deck = game.gameDeck,
+				players = game.players,
+				hand = Meteor.call('dealHand', deck)[0];
+
 			deck = Meteor.call('dealHand', deck)[1];
+
+			if (players.length >= 8){
+				throw new Meteor.Error(422, "This game is full");
+			}
 
 			Games.update({_id: gameId}, {$set: {gameDeck: deck}, $addToSet: { players: {id: userId, czar: false, score: 0, hand: hand}}});
 			return Meteor.users.update({ _id: userId } , {$set: {game: gameId}});
@@ -67,14 +74,16 @@ Meteor.methods({
 	},
 	removeUserFromGame: function(gameId, userId){
 		game = Games.findOne(gameId);
-		console.log(game.players);
+
 		isCzar = _.findWhere(game.players, {id: userId}).czar;
 
-		if (isCzar){
+		//if user created game, they cannot leave it
+		if (game.createor = userId){
+			throw new Meteor.Error(422, "You created the game. You cannot leave it!")
+		//if the user is currently the Card Czar, update card czar upon leaving game;
+		} else if (isCzar){
 			Meteor.call('updateCzar', gameId);
-		} 
-
-		if (gameId && userId){
+		} else if (gameId && userId){
 			if (Games.findOne(gameId).ended)
 				return Meteor.users.update({ _id: userId }, {$set: { game: null}} );
 			else {
